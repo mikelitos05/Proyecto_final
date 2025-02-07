@@ -24,9 +24,40 @@ public class CLI {
      */
     public static void runApp() {
         Scanner scanner = new Scanner(System.in);
-        showMenu();
+        language = new En();
+        int opcIdioma = 0;
+        while (opcIdioma > 4 || opcIdioma < 1) {
+            System.out.println("Seleccione un idioma");
+            System.out.println("1. Español");
+            System.out.println("2. English");
+            System.out.println("3. Русский");
+            System.out.println("4. Português");
+            try {
+                opcIdioma = scanner.nextInt();
+                scanner.nextLine();
+            } catch (InputMismatchException e) {
+                System.out.println(language.invalid_option);
+                scanner.nextLine();
+            }
+            switch (opcIdioma) {
+                case 1:
+                    language = new Es();
+                    break;
+                case 2:
+                    language = new En();
+                    break;
+                case 3:
+                    language = new Ru();
+                    break;
+                case 4:
+                    language = new Pr();
+                default:
+                    System.out.println(language.invalid_option);
+                    break;
+            }
+        }
 
-        language = new Es();
+        showMenu();
 
         int opciones = 0;
 
