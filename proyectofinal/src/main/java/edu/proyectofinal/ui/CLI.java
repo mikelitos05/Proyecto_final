@@ -10,13 +10,13 @@ public class CLI {
      *  Metodo que muestra el menu
      */
     public static void showMenu() {
-        System.out.println(language.welcome);
-        System.out.println(language.select_option);
-        System.out.println(language.option_1);
-        System.out.println(language.option_2);
-        System.out.println(language.option_3);
-        System.out.println(language.option_4);
-        System.out.println(language.option_5);
+        System.out.println(language.WELCOME);
+        System.out.println(language.SELECT_OPTION);
+        System.out.println(language.OPTION_1);
+        System.out.println(language.OPTION_2);
+        System.out.println(language.OPTION_3);
+        System.out.println(language.OPTION_4);
+        System.out.println(language.OPTION_5);
     }
 
     /**
@@ -36,7 +36,7 @@ public class CLI {
                 opcIdioma = scanner.nextInt();
                 scanner.nextLine();
             } catch (InputMismatchException e) {
-                System.out.println(language.invalid_option);
+                System.out.println(language.INVALID_OPTION);
                 scanner.nextLine();
             }
             switch (opcIdioma) {
@@ -52,7 +52,7 @@ public class CLI {
                 case 4:
                     language = new Pr();
                 default:
-                    System.out.println(language.invalid_option);
+                    System.out.println(language.INVALID_OPTION);
                     break;
             }
         }
@@ -66,40 +66,41 @@ public class CLI {
                 opciones = scanner.nextInt();
                 scanner.nextLine();
             } catch (InputMismatchException e) {
-                System.out.println(language.invalid_option);
+                System.out.println(language.INVALID_OPTION);
                 scanner.nextLine();
             }
             switch (opciones) {
                 case 1:
-                    System.out.println(language.imagine_books);
+                    System.out.println(language.IMAGINE_BOOKS);
                     break;
                 case 2:
-                    System.out.println(language.active_users);
+                    System.out.println(language.ACTIVE_USERS);
                     break;
                 case 3:
-                    System.out.println(language.enter_user_name);
+                    System.out.println(language.ENTER_USER_NAME);
                     String usuario = scanner.nextLine();
-                    System.out.println(language.enter_book_loan);
+                    System.out.println(language.ENTER_BOOK_LOAN);
                     String libro = scanner.nextLine();
                     System.out.println("\n---------------------------------------------------------");
-                    System.out.println("\n" + language.book_loaned.replace("{0}", libro).replace("{1}", usuario) + "\n");
+                    System.out.println("\n" + language.BOOK_LOANED.replace("{0}", libro).replace("{1}", usuario) + "\n");
                     System.out.println("---------------------------------------------------------");
+
                     showMenu();
                     break;
                 case 4:
-                    System.out.println(language.enter_book_name);
+                    System.out.println(language.ENTER_BOOK_NAME);
                     String nuevoLibro = scanner.nextLine();
-                    System.out.println(language.enter_author_name);
+                    System.out.println(language.ENTER_AUTHOR_NAME);
                     String autor = scanner.nextLine();
-                    System.out.println(language.enter_book_year);
+                    System.out.println(language.ENTER_BOOK_YEAR);
                     int año = scanner.nextInt();
-                    System.out.println(language.book_added.replace("{0}", nuevoLibro));
+                    System.out.println(language.BOOK_ADDED.replace("{0}", nuevoLibro));
                     break;
                 case 5:
-                    System.out.println(language.goodbye);
+                    System.out.println(language.GOODBYE);
                     break;
                 default:
-                    System.out.println(language.invalid_option);
+                    System.out.println(language.INVALID_OPTION);
                     break;
             }
         }
