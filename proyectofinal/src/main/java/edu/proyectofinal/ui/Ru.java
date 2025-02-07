@@ -22,3 +22,4 @@ public class Ru extends Language {
         goodbye = "До свидания";
     }
 }
+

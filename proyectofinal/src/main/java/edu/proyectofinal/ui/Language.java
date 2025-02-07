@@ -21,3 +21,4 @@ public class Language {
     protected String goodbye;
 
 }
+
