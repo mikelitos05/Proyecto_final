@@ -1,16 +1,16 @@
-
-import java.awt.print.Book;
 import java.util.ArrayList;
 import java.util.List;
 
 public class BookManager {
     private List<Book> books;
 
+    //Es un constructor que inicializa la lista puesta de libros ya precargados en el codigo
     public BookManager() {
         this.books = new ArrayList<>();
-        loadPreloadedBooks();
+        loadPreloadedBooks();   
     }
 
+    //Método que carga ya los libros puestos
     private void loadPreloadedBooks() {
         books.add(new Book("Diario de Greg. Un renacuajo", "Jeff Kinney", "Novela de ficción-Comedia/Humor", 4));
         books.add(new Book("Habitos Atómicos", "James Clear", "Libro de autoayuda", 5));
@@ -20,36 +20,32 @@ public class BookManager {
         books.add(new Book("Los tres mosqueteros", "Alexandre Dumas", "Novela literaria de aventura, capa y espada y ficción", 5));
     }
 
+    //Registrar un nuevo libro
     public void registerBook(Book book) {
         books.add(book);
-        System.out.println("Libro registrado: " + book.getTitle());
     }
 
+    //Obtener las listas ya registradas
     public List<Book> getBooks() {
         return books;
     }
 
-    public void displayBooks(){
-        if(books.isEmpty()) {
-            System.out.println("No existen libros en el registro.");
-        } else {
-            System.out.println("\n--- Lista de Libros ---");
-            for (Book book : books) {
-                System.out.println(book);
-            }
-        }
-    }
-    
+    //Buscar libro por el titulo 
     public Book findBookByTitle(String title) {
         for (Book book : books) {
             if (book.getTitle().equalsIgnoreCase(title)) {
                 return book;
             }
         }
-
-        System.out.println("No se encuentra libro.");
         return null;
     }
+
+    
+
+
 }
 
 
+
+
+   
