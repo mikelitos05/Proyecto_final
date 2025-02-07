@@ -5,6 +5,11 @@ public class User {
     private int activeLend;
 
 
+    /**
+     * Metodo constructor de User
+     * @param name nombre del usuario
+     * @param activeLend prestamos activos
+     */
     public User(String name, int activeLend) {
         this.name = name;
         this.activeLend = activeLend;
