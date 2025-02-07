@@ -20,7 +20,7 @@ public class User {
     }
 
     public void setActiveLend(int activeLend) {
-        if (activeLend < 0 || activeLend > 3) {
+        if (activeLend < 0 || activeLend > 2) {
             throw new IllegalArgumentException("Numero incorrecto de prestamos");
         }
         else{
