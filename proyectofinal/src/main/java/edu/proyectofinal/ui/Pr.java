@@ -24,7 +24,12 @@ public class Pr extends Language {
         NO_USERS = "Não há usuários disponíveis";
         NAMES = "Nomes";
         LOANS = "Empréstimos";
-
+        BOOK = "Livro";
+        AUTHOR = "Autor";
+        DESCRIPTION = "Descrição";
+        TOTALCOPIES = "Cópias totais";
+        AVAILABLECOPIES = "Cópias disponíveis";
+        TITTLE = "Qualificação";
 
     }
 }

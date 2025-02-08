@@ -24,7 +24,12 @@ public class Ru extends Language {
         NO_USERS = "Нет доступных пользователей";
         NAMES = "Имена";
         LOANS = "Выдачи";
-
+        BOOK = "Книга";
+        AUTHOR = "Автор";
+        DESCRIPTION = "Описание";
+        TOTALCOPIES = "Всего копий";
+        AVAILABLECOPIES = "Доступных копий";
+        TITTLE = "Квалификация";
 
     }
 }

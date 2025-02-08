@@ -91,13 +91,13 @@ public class CLI {
                     for (Book book : bookManager.getBooks()){
 
                         System.out.println("=====================================================");
-                        System.out.println("Libro: " + numLibro);
+                        System.out.println(""+language.BOOK + ": " + numLibro);
                         System.out.println("=====================================================");
-                        System.out.println("Nombre del libro: " + book.getTitle());
-                        System.out.println("Autor del libro: " + book.getAuthor());
-                        System.out.println("Descripcion del libro: " + book.getDescription());
-                        System.out.println("Copias totales: " + book.getTotalCopies());
-                        System.out.println("Copias disponibles " + book.getAvailabilityCopies());
+                        System.out.println(""+language.TITTLE + ": " + book.getTitle());
+                        System.out.println(""+language.AUTHOR + ": " + book.getAuthor());
+                        System.out.println(""+language.DESCRIPTION + ": " + book.getDescription());
+                        System.out.println(""+language.TOTALCOPIES + ": " + book.getTotalCopies());
+                        System.out.println(""+language.AVAILABLECOPIES + ": " + book.getAvailabilityCopies());
 
                         numLibro = numLibro + 1;
                     }

@@ -23,4 +23,11 @@ public class Language {
     protected String NO_USERS;
     protected String NAMES;
     protected String LOANS;
+    protected String BOOK;
+    protected String AUTHOR;
+    protected String DESCRIPTION;
+    protected String TOTALCOPIES;
+    protected String AVAILABLECOPIES;
+    protected String TITTLE;
+
 }

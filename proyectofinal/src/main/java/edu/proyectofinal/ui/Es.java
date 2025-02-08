@@ -22,7 +22,13 @@ public class Es extends Language {
         BOOK_ADDED = "Libro agregado";
         GOODBYE = "Adiós";
         NO_USERS = "No hay usuarios disponibles";
+        AUTHOR = "Autor";
+        BOOK = "Libro";
+        DESCRIPTION = "Descripcion";
         NAMES = "Names";
         LOANS = "Loans";
+        TITTLE = "Titulo";
+        TOTALCOPIES = "Copias totales";
+        AVAILABLECOPIES = "Copias disponibles";
     }
 }

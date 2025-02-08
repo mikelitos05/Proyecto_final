@@ -24,7 +24,12 @@ public class En extends Language {
         NO_USERS = "No users available";
         NAMES = "Names";
         LOANS = "Loans";
-
+        BOOK = "Book";
+        AUTHOR = "Author";
+        DESCRIPTION = "Description";
+        TOTALCOPIES = "Total copies";
+        AVAILABLECOPIES = "Available copies";
+        TITTLE = "Tittle";
 
     }
 }

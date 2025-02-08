@@ -42,12 +42,4 @@ public class User {
         }
     }
 
-
-
-
-
-
-
-
-
 }
