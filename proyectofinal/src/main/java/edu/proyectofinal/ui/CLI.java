@@ -1,6 +1,8 @@
 package edu.proyectofinal.ui;
 
+import edu.proyectofinal.data.Book;
 import edu.proyectofinal.data.User;
+import edu.proyectofinal.process.BookManager;
 import edu.proyectofinal.process.UserManager;
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -27,6 +29,15 @@ public class CLI {
      */
     public static void runApp() {
         UserManager userManager = new UserManager();
+        BookManager bookManager = new BookManager();
+
+        bookManager.registerBook("Diario de Greg. Un renacuajo", "Jeff Kinney", "Novela de ficción-Comedia/Humor", 4, 4);
+        bookManager.registerBook("Hábitos Atómicos", "James Clear", "Libro de autoayuda", 5,5);
+        bookManager.registerBook("El Principito", "Antoine de Saint-Exupéry", "Fábula infantil de ficción y con sentido filosófico", 4,4);
+        bookManager.registerBook("1984", "George Orwell", "Novela política de ficción distópica", 2,2);
+        bookManager.registerBook("El Conde de Montecristo", "Alexandre Dumas y Auguste Maquet", "Novela histórica de ficción con aventura, romance y temas sociales", 3,3);
+        bookManager.registerBook("Los tres mosqueteros", "Alexandre Dumas", "Novela literaria de aventura, capa y espada y ficción", 5,5);
+
 
         Scanner scanner = new Scanner(System.in);
         language = new En();
@@ -76,7 +87,20 @@ public class CLI {
             }
             switch (opciones) {
                 case 1:
-                    System.out.println(language.IMAGINE_BOOKS);
+                    int numLibro = 1;
+                    for (Book book : bookManager.getBooks()){
+
+                        System.out.println("=====================================================");
+                        System.out.println("Libro: " + numLibro);
+                        System.out.println("=====================================================");
+                        System.out.println("Nombre del libro: " + book.getTitle());
+                        System.out.println("Autor del libro: " + book.getAuthor());
+                        System.out.println("Descripcion del libro: " + book.getDescription());
+                        System.out.println("Copias totales: " + book.getTotalCopies());
+                        System.out.println("Copias disponibles " + book.getAvailabilityCopies());
+
+                        numLibro = numLibro + 1;
+                    }
                     break;
                 case 2:
                     if (userManager.getUsers().isEmpty()) {
@@ -100,6 +124,19 @@ public class CLI {
                     userManager.addUser(nombre,0);
                     break;
                 case 4:
+                    System.out.println(language.ENTER_BOOK_NAME);
+                    String nombreLibro = scanner.nextLine();
+                    System.out.println(language.ENTER_AUTHOR_NAME);
+                    String autorLibro = scanner.nextLine();
+                    System.out.println("Descripcion");
+                    String descripcionLibro = scanner.nextLine();
+                    System.out.println("Copias totales del libro");
+                    int copiasTotales = scanner.nextInt();scanner.nextLine();
+
+                    bookManager.registerBook(nombreLibro,autorLibro,descripcionLibro,copiasTotales,copiasTotales);
+
+                    break;
+                case 5:
                     System.out.println(language.ENTER_USER_NAME);
                     String usuario = scanner.nextLine();
                     System.out.println(language.ENTER_BOOK_LOAN);
@@ -109,15 +146,6 @@ public class CLI {
                     System.out.println("---------------------------------------------------------");
 
                     showMenu();
-                    break;
-                case 5:
-                    System.out.println(language.ENTER_BOOK_NAME);
-                    String nuevoLibro = scanner.nextLine();
-                    System.out.println(language.ENTER_AUTHOR_NAME);
-                    String autor = scanner.nextLine();
-                    System.out.println(language.ENTER_BOOK_YEAR);
-                    int año = scanner.nextInt();
-                    System.out.println(language.BOOK_ADDED.replace("{0}", nuevoLibro));
                     break;
                 case 6:
                     System.out.println(language.GOODBYE);

@@ -13,7 +13,7 @@ public class Book {
     private int availableCopies;
 
     /**
-     * Constructor que inicializa un objeto {@link book} con los valores proporcionados.
+     * Constructor que inicializa un objeto con los valores proporcionados.
      *
      * @param title
      * @param author
@@ -21,7 +21,7 @@ public class Book {
      * @param totalCopies
      */
 
-    public Book(String title, String author, String description, int totalCopies) {
+    public Book(String title, String author, String description, int totalCopies, int availableCopies) {
         this.title = title;
         this.author = author;
         this.description = description;
@@ -125,18 +125,5 @@ public class Book {
         }
     }
 
-    /**
-     * Devuelve una representación en forma de cadena del objeto {@link Book}.
-     *
-     * @return Una cadena con información básica del libro.
-     */
-    @Override
-    public String toString() {
-        return "BoOk{" + 
-                "title ->"  + title + 
-                ", author ->" + author + 
-                "availableCopies ->" + availableCopies + 
-                '}';
-    }
 }
 
