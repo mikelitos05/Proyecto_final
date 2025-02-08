@@ -1,7 +1,10 @@
 package edu.proyectofinal.ui;
 
+import edu.proyectofinal.data.User;
+import edu.proyectofinal.process.UserManager;
 import java.util.InputMismatchException;
 import java.util.Scanner;
+
 
 public class CLI {
     static Language language = new Language();
@@ -23,6 +26,8 @@ public class CLI {
      * Metodo que corre la aplicacion
      */
     public static void runApp() {
+        UserManager userManager = new UserManager();
+
         Scanner scanner = new Scanner(System.in);
         language = new En();
         int opcIdioma = 0;
@@ -61,7 +66,7 @@ public class CLI {
 
         int opciones = 0;
 
-        while (opciones != 5) {
+        while (opciones != 6) {
             try {
                 opciones = scanner.nextInt();
                 scanner.nextLine();
@@ -74,9 +79,27 @@ public class CLI {
                     System.out.println(language.IMAGINE_BOOKS);
                     break;
                 case 2:
-                    System.out.println(language.ACTIVE_USERS);
+                    if (userManager.getUsers().isEmpty()) {
+                        System.out.println("====================================");
+                        System.out.println(language.NO_USERS);
+                        System.out.println("====================================");
+                    }else {
+                        for(User user : userManager.getUsers()){
+                            System.out.println("=============================================");
+                            System.out.println(language.NAMES + ": " + user.getName());
+                            System.out.println(language.LOANS + ": " + user.getActiveLend());
+                            System.out.println("=============================================");
+                        }
+                    }
+
                     break;
                 case 3:
+                    System.out.println(language.ENTER_USER_NAME);
+                    String nombre = scanner.nextLine();
+
+                    userManager.addUser(nombre,0);
+                    break;
+                case 4:
                     System.out.println(language.ENTER_USER_NAME);
                     String usuario = scanner.nextLine();
                     System.out.println(language.ENTER_BOOK_LOAN);
@@ -87,7 +110,7 @@ public class CLI {
 
                     showMenu();
                     break;
-                case 4:
+                case 5:
                     System.out.println(language.ENTER_BOOK_NAME);
                     String nuevoLibro = scanner.nextLine();
                     System.out.println(language.ENTER_AUTHOR_NAME);
@@ -96,13 +119,14 @@ public class CLI {
                     int año = scanner.nextInt();
                     System.out.println(language.BOOK_ADDED.replace("{0}", nuevoLibro));
                     break;
-                case 5:
+                case 6:
                     System.out.println(language.GOODBYE);
                     break;
                 default:
                     System.out.println(language.INVALID_OPTION);
                     break;
             }
+            showMenu();
         }
     }
 }

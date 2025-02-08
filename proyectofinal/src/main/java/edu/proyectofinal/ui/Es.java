@@ -6,9 +6,10 @@ public class Es extends Language {
         SELECT_OPTION = "Seleccione una opción";
         OPTION_1 = "1. Ver libros";
         OPTION_2 = "2. Ver usuarios activos";
-        OPTION_3 = "3. Prestar libro";
+        OPTION_3 = "3. Agregar usuario";
         OPTION_4 = "4. Agregar libro";
-        OPTION_5 = "5. Salir";
+        OPTION_5 = "5. Prestar libro";
+        OPTION_6 = "6. Salir";
         INVALID_OPTION = "Opción inválida";
         IMAGINE_BOOKS = "Imagina todos los libros que puedes leer";
         ACTIVE_USERS = "Usuarios activos";
@@ -20,5 +21,8 @@ public class Es extends Language {
         ENTER_BOOK_YEAR = "Ingrese el año del libro";
         BOOK_ADDED = "Libro agregado";
         GOODBYE = "Adiós";
+        NO_USERS = "No hay usuarios disponibles";
+        NAMES = "Names";
+        LOANS = "Loans";
     }
 }

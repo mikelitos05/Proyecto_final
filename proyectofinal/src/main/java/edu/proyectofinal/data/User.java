@@ -34,8 +34,8 @@ public class User {
     }
 
     public void setName(String name) {
-        if (name == null) {
-            throw new IllegalArgumentException("Nombre es null");
+        if (name.isEmpty()) {
+            throw new IllegalArgumentException("El nombre no puede estar vacio");
         }
         else {
             this.name = name;
