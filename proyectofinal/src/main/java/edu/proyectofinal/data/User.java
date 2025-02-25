@@ -1,31 +1,21 @@
 package edu.proyectofinal.data;
 public class User {
 
+
+
+    private int id;
     private String name;
-    private int activeLend;
+    private int age;
 
 
     /**
      * Metodo constructor de User
      * @param name nombre del usuario
-     * @param activeLend prestamos activos
      */
-    public User(String name, int activeLend) {
+    public User(int id,String name,int age) {
         this.name = name;
-        this.activeLend = activeLend;
-    }
-
-    public int getActiveLend() {
-        return activeLend;
-    }
-
-    public void setActiveLend(int activeLend) {
-        if (activeLend < 0 || activeLend > 2) {
-            throw new IllegalArgumentException("Numero incorrecto de prestamos");
-        }
-        else{
-            this.activeLend = activeLend;
-        }
+        this.age = age;
+        this.id = id;
 
     }
 
@@ -41,5 +31,27 @@ public class User {
             this.name = name;
         }
     }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        if(age < 0 || age > 140){
+            throw new IllegalArgumentException("La edad no puede ser menor que 0 o mayor que 140");
+        }else {
+            this.age = age;
+        }
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+
 
 }

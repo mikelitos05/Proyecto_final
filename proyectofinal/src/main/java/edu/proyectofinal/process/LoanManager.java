@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import edu.proyectofinal.data.Loan;
+import edu.proyectofinal.data.User;
 
 public class LoanManager {
 
@@ -11,7 +12,7 @@ public class LoanManager {
     /**
      * Metodo que se encarga de crear el array de los prestamos
      */
-    public LoanManager(ArrayList<Loan> loans) {
+    public LoanManager() {
         this.loans = new ArrayList<>();
     }
 
@@ -23,7 +24,7 @@ public class LoanManager {
      * @param status estado del prestamo
      * @param user usuario que lo pide
      */
-    public void addLean(String book, String endDate, String startDate, boolean status, String user){
+    public void addLean(String book, String endDate, String startDate, boolean status, User user){
         Loan loan = new Loan(book, endDate, startDate, status, user);
         loans.add(loan);
     }

@@ -2,7 +2,7 @@ package edu.proyectofinal.data;
 
 public class Loan {
     private String book;
-    private String user;
+    private User user;
     private String startDate;
     private String endDate;
     private boolean status;
@@ -15,7 +15,7 @@ public class Loan {
      * @param status
      * @param user
      */
-    public Loan(String book, String endDate, String startDate, boolean status, String user) {
+    public Loan(String book, String endDate, String startDate, boolean status, User user) {
         setBook(book);
         setEndDate(endDate);
         setStartDate(startDate);
@@ -36,11 +36,11 @@ public class Loan {
         }
     }
 
-    public String getUser() {
+    public User getUser() {
         return user;
     }
 
-    public void setUser(String user) {
+    public void setUser(User user) {
         if (this.user == null) {
             throw new IllegalArgumentException("User is null");
         }

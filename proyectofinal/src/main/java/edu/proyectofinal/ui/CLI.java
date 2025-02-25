@@ -1,16 +1,18 @@
 package edu.proyectofinal.ui;
 
 import edu.proyectofinal.data.Book;
+import edu.proyectofinal.data.Loan;
 import edu.proyectofinal.data.User;
 import edu.proyectofinal.process.BookManager;
+import edu.proyectofinal.process.LoanManager;
 import edu.proyectofinal.process.UserManager;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-
 public class CLI {
     static Language language = new Language();
-
+    static BookManager bookManager = new BookManager();
+    static UserManager userManager = new UserManager();
     /**
      *  Metodo que muestra el menu
      */
@@ -24,12 +26,39 @@ public class CLI {
         System.out.println(language.OPTION_5);
     }
 
+    public static void showBooks(){
+        int numLibro = 1;
+        for (Book book : bookManager.getBooks()){
+
+            System.out.println("=====================================================");
+            System.out.println(""+language.BOOK + ": " + numLibro);
+            System.out.println("=====================================================");
+            System.out.println(""+language.TITTLE + ": " + book.getTitle());
+            System.out.println(""+language.AUTHOR + ": " + book.getAuthor());
+            System.out.println(""+language.DESCRIPTION + ": " + book.getDescription());
+            System.out.println(""+language.TOTALCOPIES + ": " + book.getTotalCopies());
+            System.out.println(""+language.AVAILABLECOPIES + ": " + book.getAvailabilityCopies());
+
+            numLibro = numLibro + 1;
+        }
+    }
+
+
+    public static void showUsers(){
+        for(User user : userManager.getUsers()){
+            System.out.println("=============================================");
+            System.out.println(language.NAMES + ": " + user.getName());
+            System.out.println("=============================================");
+        }
+    }
+
+
     /**
      * Metodo que corre la aplicacion
      */
     public static void runApp() {
         UserManager userManager = new UserManager();
-        BookManager bookManager = new BookManager();
+        LoanManager loanManager = new LoanManager();
 
         bookManager.registerBook("Diario de Greg. Un renacuajo", "Jeff Kinney", "Novela de ficción-Comedia/Humor", 4, 4);
         bookManager.registerBook("Hábitos Atómicos", "James Clear", "Libro de autoayuda", 5,5);
@@ -87,20 +116,7 @@ public class CLI {
             }
             switch (opciones) {
                 case 1:
-                    int numLibro = 1;
-                    for (Book book : bookManager.getBooks()){
-
-                        System.out.println("=====================================================");
-                        System.out.println(""+language.BOOK + ": " + numLibro);
-                        System.out.println("=====================================================");
-                        System.out.println(""+language.TITTLE + ": " + book.getTitle());
-                        System.out.println(""+language.AUTHOR + ": " + book.getAuthor());
-                        System.out.println(""+language.DESCRIPTION + ": " + book.getDescription());
-                        System.out.println(""+language.TOTALCOPIES + ": " + book.getTotalCopies());
-                        System.out.println(""+language.AVAILABLECOPIES + ": " + book.getAvailabilityCopies());
-
-                        numLibro = numLibro + 1;
-                    }
+                    showBooks();
                     break;
                 case 2:
                     if (userManager.getUsers().isEmpty()) {
@@ -108,12 +124,7 @@ public class CLI {
                         System.out.println(language.NO_USERS);
                         System.out.println("====================================");
                     }else {
-                        for(User user : userManager.getUsers()){
-                            System.out.println("=============================================");
-                            System.out.println(language.NAMES + ": " + user.getName());
-                            System.out.println(language.LOANS + ": " + user.getActiveLend());
-                            System.out.println("=============================================");
-                        }
+                        showUsers();
                     }
 
                     break;
@@ -121,7 +132,7 @@ public class CLI {
                     System.out.println(language.ENTER_USER_NAME);
                     String nombre = scanner.nextLine();
 
-                    userManager.addUser(nombre,0);
+                    userManager.addUser(1,nombre,15);
                     break;
                 case 4:
                     System.out.println(language.ENTER_BOOK_NAME);
@@ -137,13 +148,23 @@ public class CLI {
 
                     break;
                 case 5:
+                    showUsers();
                     System.out.println(language.ENTER_USER_NAME);
                     String usuario = scanner.nextLine();
+                    showBooks();
                     System.out.println(language.ENTER_BOOK_LOAN);
                     String libro = scanner.nextLine();
-                    System.out.println("\n---------------------------------------------------------");
-                    System.out.println("\n" + language.BOOK_LOANED.replace("{0}", libro).replace("{1}", usuario) + "\n");
-                    System.out.println("---------------------------------------------------------");
+                    System.out.println("Ingrese la fecha en la que terminara del prestamo");
+                    String fechaFin = scanner.nextLine();
+                    System.out.println("Ingrese la fecha en la que inicio el prestamo");
+                    String fechaInicio = scanner.nextLine();
+                    if (userManager.findUserByName(usuario) == null) {
+                        System.out.println("No usuario encontrado");
+                    }else {
+                        loanManager.addLean(libro, fechaFin, fechaInicio, true, userManager.findUserByName(usuario));
+
+                    }
+
 
                     showMenu();
                     break;
