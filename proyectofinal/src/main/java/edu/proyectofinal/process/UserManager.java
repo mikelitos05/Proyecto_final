@@ -44,4 +44,8 @@ public class UserManager {
         return this.users;
     }
 
+    public int generateId(){
+        return users.size() + 1;
+    }
+
 }

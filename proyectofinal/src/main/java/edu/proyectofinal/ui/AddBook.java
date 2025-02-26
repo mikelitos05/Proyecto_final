@@ -1,18 +1,21 @@
 package edu.proyectofinal.ui;
 
-import edu.proyectofinal.data.Book;
 import edu.proyectofinal.process.BookManager;
 
-import javax.swing.JOptionPane;
+import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 
 
 public class AddBook extends javax.swing.JFrame {
 
+    private DefaultTableModel tablBooks;
     /**
      * Creates new form Inicio
      */
-    public AddBook() {
+    public AddBook(DefaultTableModel tablBooks) {
         initComponents();
+        this.tablBooks = tablBooks;
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -143,8 +146,9 @@ public class AddBook extends javax.swing.JFrame {
         }else{
             BookManager bookManager = new BookManager();
             //Esta pendiente arreglar lo de copias totales
-            bookManager.registerBook(fieldNameBook.getText(),fielNameAuthor.getText(),fieldDescription.getText(),1,1);
+            bookManager.registerBook(bookManager.generateId(), fieldNameBook.getText(),fielNameAuthor.getText(),fieldDescription.getText(),1,1);
             JOptionPane.showMessageDialog(AddBook.this, "Libro registrado con exito");
+            tablBooks.addRow(new Object[]{fieldNameBook.getText(),fielNameAuthor.getText(),fieldDescription.getText(),1,1});
             this.dispose();
         }
 

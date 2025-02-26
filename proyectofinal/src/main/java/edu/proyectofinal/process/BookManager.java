@@ -25,12 +25,20 @@ public class BookManager {
 
 
     /**
-     * Registra un nuevo libro en la lista de libros.
+     * Registra un nuevo libro en la lista de libros y si ya existe un libro tambien lo registra pero al libro anterior se le agrega 1 en el total libros.
      *
      */
-    public void registerBook(String title, String author,String description,int totalCopies,int availableCopies) {
-        Book book = new Book(title,author,description,totalCopies,availableCopies);
-        books.add(book);
+    public void registerBook(int id,String title, String author,String description,int totalCopies,int availableCopies) {
+        if(findBookByTitle(title) == null) {
+            Book book = new Book(id,title, author, description, totalCopies, availableCopies);
+            books.add(book);
+        }else{
+            Book bookToModify = findBookByTitle(title);
+            bookToModify.setTotalCopies(bookToModify.getTotalCopies() + 1);
+            Book book = new Book(id,title, author, description, bookToModify.getTotalCopies() + 1, availableCopies);
+
+        }
+
     }
 
     /**
@@ -67,7 +75,6 @@ public class BookManager {
     public int getTotalBooks() {
         return books.size();
     }
-
     /**
      * Verifica si la lista de libros está vacía.
      *
@@ -75,6 +82,14 @@ public class BookManager {
      */
     public boolean isEmpty() {
         return books.isEmpty();
+    }
+
+    /**
+     * Metodo que se encarga de generar el id
+     * @return
+     */
+    public int generateId(){
+        return books.size() + 1;
     }
 }
 

@@ -60,12 +60,7 @@ public class CLI {
         UserManager userManager = new UserManager();
         LoanManager loanManager = new LoanManager();
 
-        bookManager.registerBook("Diario de Greg. Un renacuajo", "Jeff Kinney", "Novela de ficción-Comedia/Humor", 4, 4);
-        bookManager.registerBook("Hábitos Atómicos", "James Clear", "Libro de autoayuda", 5,5);
-        bookManager.registerBook("El Principito", "Antoine de Saint-Exupéry", "Fábula infantil de ficción y con sentido filosófico", 4,4);
-        bookManager.registerBook("1984", "George Orwell", "Novela política de ficción distópica", 2,2);
-        bookManager.registerBook("El Conde de Montecristo", "Alexandre Dumas y Auguste Maquet", "Novela histórica de ficción con aventura, romance y temas sociales", 3,3);
-        bookManager.registerBook("Los tres mosqueteros", "Alexandre Dumas", "Novela literaria de aventura, capa y espada y ficción", 5,5);
+
 
 
         Scanner scanner = new Scanner(System.in);
@@ -144,7 +139,7 @@ public class CLI {
                     System.out.println("Copias totales del libro");
                     int copiasTotales = scanner.nextInt();scanner.nextLine();
 
-                    bookManager.registerBook(nombreLibro,autorLibro,descripcionLibro,copiasTotales,copiasTotales);
+                    bookManager.registerBook(bookManager.generateId(), nombreLibro,autorLibro,descripcionLibro,copiasTotales,copiasTotales);
 
                     break;
                 case 5:
