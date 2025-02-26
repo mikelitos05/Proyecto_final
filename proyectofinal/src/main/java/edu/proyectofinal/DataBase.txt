@@ -1,0 +1,31 @@
+Libro:1:Cien anos de soledad:Gabriel Garcia Marquez:Realismo mágico:2:2
+Libro:2:1984:George Orwell:Distopía:3:3
+Libro:3:Don Quijote de la Mancha:Miguel de Cervantes:Novela de caballerías:1:1
+Libro:4:El gran Gatsby:F. Scott Fitzgerald:Novela trágica:2:2
+Libro:5:Orgullo y prejuicio:Jane Austen:Novela romántica:3:3
+Libro:6:La sombra del viento:Carlos Ruiz Zafon:Misterio:1:1
+Libro:7:Crimen y castigo:Fyodor Dostoyevski:Novela psicológica:2:2
+Libro:8:Matar a un ruiseñor:Harper Lee:Drama:3:3
+Libro:9:El Hobbit:J.R.R. Tolkien:Fantasía:1:1
+Libro:10:Rayuela:Julio Cortázar:Novela experimental:2:2
+Libro:11:El retrato de Dorian Gray:Oscar Wilde:Novela gótica:3:3
+Libro:12:El alquimista:Paulo Coelho:Ficción espiritual:1:1
+Libro:13:La casa de los espiritus:Isabel Allende:Realismo mágico:2:2
+Libro:14:Los pilares de la tierra:Ken Follett:Novela histórica:3:3
+Libro:15:El nombre de la rosa:Umberto Eco:Misterio histórico:1:1
+Nombre:1:Gabriel García Márquez:19
+Nombre:2:Jorge Luis Borges:22
+Nombre:3:Isabel Allende:35
+Nombre:4:Ernest Hemingway:47
+Nombre:5:Pablo Neruda:58
+Nombre:6:Virginia Woolf:63
+Nombre:7:Mario Vargas Llosa:71
+Nombre:8:Emily Brontë:84
+Nombre:9:Julio Cortázar:93
+Nombre:10:Toni Morrison:10
+Nombre:11:Federico García Lorca:11
+Nombre:12:Franz Kafka:12
+Nombre:13:Sor Juana Inés:13
+Nombre:14:James Joyce:14
+Nombre:15:Gabriela Mistral:15
+

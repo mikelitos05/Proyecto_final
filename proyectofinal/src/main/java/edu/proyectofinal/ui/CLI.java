@@ -35,7 +35,7 @@ public class CLI {
             System.out.println("=====================================================");
             System.out.println(""+language.TITTLE + ": " + book.getTitle());
             System.out.println(""+language.AUTHOR + ": " + book.getAuthor());
-            System.out.println(""+language.DESCRIPTION + ": " + book.getDescription());
+            System.out.println(""+language.DESCRIPTION + ": " + book.getgenrer());
             System.out.println(""+language.TOTALCOPIES + ": " + book.getTotalCopies());
             System.out.println(""+language.AVAILABLECOPIES + ": " + book.getAvailabilityCopies());
 

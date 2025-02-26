@@ -10,7 +10,7 @@ public class Book {
     private int id;
     private String title;
     private String author;
-    private String description;
+    private String genrer;
     private int totalCopies;
     private int availableCopies;
 
@@ -19,15 +19,15 @@ public class Book {
      *
      * @param title
      * @param author
-     * @param description
+     * @param genrer
      * @param totalCopies
      */
 
-    public Book(int id,String title, String author, String description, int totalCopies, int availableCopies) {
+    public Book(int id,String title, String author, String genrer, int totalCopies, int availableCopies) {
         this.id = id;
         this.title = title;
         this.author = author;
-        this.description = description;
+        this.genrer = genrer;
         this.totalCopies = totalCopies;
         this.availableCopies = totalCopies; //Desde el comienzo como ya tenemos libros precargados, se van a mostrar las que ya existen.
     }
@@ -73,17 +73,17 @@ public class Book {
      *
      * @return La descripción del libro.
      */
-    public String getDescription() {
-        return description;
+    public String getgenrer() {
+        return genrer;
     }
 
     /**
      * Establece una nueva descripción para el libro.
      *
-     * @param description La nueva descripción del libro.
+     * @param genrer La nueva descripción del libro.
      */
-    public void setDescription(String description) {
-        this.description = description;
+    public void setgenrer(String genrer) {
+        this.genrer = genrer;
     }
 
     /**
