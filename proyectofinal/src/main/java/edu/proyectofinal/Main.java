@@ -16,7 +16,7 @@ import java.util.List;
 public class Main {
     public static void main(String[] args) {
         //Cargar la base de datos
-        Path file = Paths.get("C:\\Users\\Mike\\IdeaProjects\\Proyecto_final\\proyectofinal\\src\\main\\java\\edu\\proyectofinal/DataBase.txt");
+        Path file = Paths.get("proyectofinal/src/main/database/DataBase.txt");
         BookManager bookManager = new BookManager();
         UserManager userManager = new UserManager();
 
