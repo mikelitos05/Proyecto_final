@@ -19,6 +19,7 @@ public class Main {
         Path file = Paths.get("C:\\Users\\Mike\\IdeaProjects\\Proyecto_final\\proyectofinal\\src\\main\\java\\edu\\proyectofinal/DataBase.txt");
         BookManager bookManager = new BookManager();
         UserManager userManager = new UserManager();
+
         List<String> lines = null;
         try {
             lines = Files.readAllLines(file);
@@ -31,6 +32,7 @@ public class Main {
                 bookManager.registerBook(Integer.valueOf(tokens[1]),tokens[2],tokens[3],tokens[4],Integer.valueOf(tokens[5]),Integer.valueOf(tokens[6]));
             }
             if (tokens[0].equals("Usuario")){
+
                 userManager.addUser(Integer.valueOf(tokens[1]),tokens[2],Integer.valueOf(tokens[3]));
             }
         }

@@ -1,4 +1,4 @@
-Libro:1:Cien anos de soledad:Gabriel Garcia Marquez:Realismo mágico:2:2
+Libro:1:Cien años de soledad:Gabriel Garcia Marquez:Realismo mágico:2:2
 Libro:2:1984:George Orwell:Distopía:3:3
 Libro:3:Don Quijote de la Mancha:Miguel de Cervantes:Novela de caballerías:1:1
 Libro:4:El gran Gatsby:F. Scott Fitzgerald:Novela trágica:2:2
@@ -13,19 +13,64 @@ Libro:12:El alquimista:Paulo Coelho:Ficción espiritual:1:1
 Libro:13:La casa de los espiritus:Isabel Allende:Realismo mágico:2:2
 Libro:14:Los pilares de la tierra:Ken Follett:Novela histórica:3:3
 Libro:15:El nombre de la rosa:Umberto Eco:Misterio histórico:1:1
-Nombre:1:Gabriel García Márquez:19
-Nombre:2:Jorge Luis Borges:22
-Nombre:3:Isabel Allende:35
-Nombre:4:Ernest Hemingway:47
-Nombre:5:Pablo Neruda:58
-Nombre:6:Virginia Woolf:63
-Nombre:7:Mario Vargas Llosa:71
-Nombre:8:Emily Brontë:84
-Nombre:9:Julio Cortázar:93
-Nombre:10:Toni Morrison:10
-Nombre:11:Federico García Lorca:11
-Nombre:12:Franz Kafka:12
-Nombre:13:Sor Juana Inés:13
-Nombre:14:James Joyce:14
-Nombre:15:Gabriela Mistral:15
+Usuario:1:Gabriel García Márquez:19
+Usuario:2:Jorge Luis Borges:22
+Usuario:3:Isabel Allende:35
+Usuario:4:Ernest Hemingway:47
+Usuario:5:Pablo Neruda:58
+Usuario:6:Virginia Woolf:63
+Usuario:7:Mario Vargas Llosa:71
+Usuario:8:Emily Brontë:84
+Usuario:9:Julio Cortázar:93
+Usuario:10:Toni Morrison:10
+Usuario:11:Federico García Lorca:11
+Usuario:12:Franz Kafka:12
+Usuario:13:Sor Juana Inés:13
+Usuario:14:James Joyce:14
+Usuario:15:Gabriela Mistral:15
+Usuario:16:Leo Tolstoy:16
+Usuario:17:Fiódor Dostoyevski:17
+Usuario:18:Charles Dickens:18
+Usuario:19:Mark Twain:19
+Usuario:20:William Faulkner:20
+Usuario:21:Jane Austen:21
+Usuario:22:George Orwell:22
+Usuario:23:Frances Hodgson Burnett:23
+Usuario:24:Oscar Wilde:24
+Usuario:25:Louisa May Alcott:25
+Usuario:26:Ray Bradbury:26
+Usuario:27:Haruki Murakami:27
+Usuario:28:J.R.R. Tolkien:28
+Usuario:29:Albert Camus:29
+Usuario:30:Simone de Beauvoir:30
+Usuario:31:Virginia Woolf:31
+Usuario:32:Jack London:32
+Usuario:33:Gabriel García Márquez:33
+Usuario:34:Emily Dickinson:34
+Usuario:35:William Shakespeare:35
+Usuario:36:John Steinbeck:36
+Usuario:37:Margaret Atwood:37
+Usuario:38:Emily Brontë:38
+Usuario:39:Stephen King:39
+Usuario:40:Vladimir Nabokov:40
+Usuario:41:Harper Lee:41
+Usuario:42:Ernest Hemingway:42
+Usuario:43:Herman Melville:43
+Usuario:44:T.S. Eliot:44
+Usuario:45:Joseph Conrad:45
+Usuario:46:William Wordsworth:46
+Usuario:47:Thomas Hardy:47
+Usuario:48:Franz Kafka:48
+Usuario:49:Zadie Smith:49
+Usuario:50:Marguerite Yourcenar:50
+Usuario:51:Victor Hugo:51
+Usuario:52:Gabriela García Mistral:52
+Usuario:53:Edgar Allan Poe:53
+Usuario:54:Honoré de Balzac:54
+Usuario:55:Kurt Vonnegut:55
+Usuario:56:V.S. Naipaul:56
+Usuario:57:Margaret Laurence:57
+Usuario:58:Jack Kerouac:58
+Usuario:59:William Blake:59
+Usuario:60:Ana María Matute:60
 

@@ -1,17 +1,27 @@
 package edu.proyectofinal.process;
 
 import edu.proyectofinal.data.User;
+import edu.proyectofinal.data.UserJunior;
+import edu.proyectofinal.data.UserTeen;
+import edu.proyectofinal.data.UserVip;
 
 import java.util.ArrayList;
 
 public class UserManager {
     ArrayList<User> users;
+    ArrayList<UserJunior> usersJunior;
+    ArrayList<UserTeen> usersTeen;
+    ArrayList<UserVip> usersVip;
+
 
     /**
      * Metodo constructor de UserManager
      */
     public UserManager() {
         this.users = new ArrayList<>();
+        this.usersJunior = new ArrayList<>();
+        this.usersTeen = new ArrayList<>();
+        this.usersVip = new ArrayList<>();
     }
 
     /**
@@ -19,8 +29,21 @@ public class UserManager {
      * @param name nombre del usuario a añadir
      */
     public void addUser(int id,String name,int age){
-        User user = new User(id,name,age);
-        users.add(user);
+        if(age > 18){
+            User user = new User(id,name,age);
+            users.add(user);    
+        } else if (age > 12 && age < 18) {
+            UserTeen userTeen = new UserTeen(id,name,age);
+            usersTeen.add(userTeen);
+        } else if (age < 12) {
+            UserJunior userJunior = new UserJunior(id,name,age);
+            usersJunior.add(userJunior);
+        }
+        
+    }
+    public void addUserVip(int id,String name,int age){
+        UserVip userVip = new UserVip(id,name,age);
+        usersVip.add(userVip);
     }
 
     /**
@@ -47,5 +70,7 @@ public class UserManager {
     public int generateId(){
         return users.size() + 1;
     }
+
+
 
 }

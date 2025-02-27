@@ -1,4 +1,5 @@
 package edu.proyectofinal.data;
+
 public class User {
 
 

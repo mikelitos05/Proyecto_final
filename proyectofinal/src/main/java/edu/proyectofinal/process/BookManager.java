@@ -36,7 +36,7 @@ public class BookManager {
             Book bookToModify = findBookByTitle(title);
             bookToModify.setTotalCopies(bookToModify.getTotalCopies() + 1);
             Book book = new Book(id,title, author, description, bookToModify.getTotalCopies() + 1, availableCopies);
-
+            books.add(book);
         }
 
     }
