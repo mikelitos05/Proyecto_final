@@ -16,7 +16,8 @@ import java.util.List;
 public class Main {
     public static void main(String[] args) {
         //Cargar la base de datos
-        Path file = Paths.get("proyectofinal/src/main/database/DataBase.txt");
+        //Try
+        Path file = Paths.get("database/DataBase.txt");
         BookManager bookManager = new BookManager();
         UserManager userManager = new UserManager();
 
@@ -32,7 +33,6 @@ public class Main {
                 bookManager.registerBook(Integer.valueOf(tokens[1]),tokens[2],tokens[3],tokens[4],Integer.valueOf(tokens[5]),Integer.valueOf(tokens[6]));
             }
             if (tokens[0].equals("Usuario")){
-
                 userManager.addUser(Integer.valueOf(tokens[1]),tokens[2],Integer.valueOf(tokens[3]));
             }
         }
