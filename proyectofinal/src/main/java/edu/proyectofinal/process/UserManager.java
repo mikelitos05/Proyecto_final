@@ -1,76 +1,72 @@
 package edu.proyectofinal.process;
 
-import edu.proyectofinal.data.User;
-import edu.proyectofinal.data.UserJunior;
-import edu.proyectofinal.data.UserTeen;
-import edu.proyectofinal.data.UserVip;
+import edu.proyectofinal.data.*;
 
 import java.util.ArrayList;
 
-public class UserManager {
-    ArrayList<User> users;
-    ArrayList<UserJunior> usersJunior;
-    ArrayList<UserTeen> usersTeen;
-    ArrayList<UserVip> usersVip;
+/**
+ * Clase UserManager que gestiona los usuarios de la biblioteca.
+ */
 
+public class UserManager {
+    private ArrayList<User> users;
 
     /**
      * Metodo constructor de UserManager
      */
     public UserManager() {
         this.users = new ArrayList<>();
-        this.usersJunior = new ArrayList<>();
-        this.usersTeen = new ArrayList<>();
-        this.usersVip = new ArrayList<>();
     }
 
     /**
-     * Metodo que se encarga de añadir un usuario
-     * @param name nombre del usuario a añadir
+     * Metodo que se encarga de añadir un usuario a la lista.
+     * La adición es según el tipo especificado.
+     *
+     * @param name nombre del usuario a añadir.
+     * @param age  Edad del usuario.
+     * @param type Tipo en el que el usuario es catogorizado (Jr, Teen, Adulto, VIP).
      */
-    public void addUser(int id,String name,int age){
-        if(age > 18){
-            User user = new User(id,name,age);
-            users.add(user);    
-        } else if (age > 12 && age < 18) {
-            UserTeen userTeen = new UserTeen(id,name,age);
-            usersTeen.add(userTeen);
-        } else if (age < 12) {
-            UserJunior userJunior = new UserJunior(id,name,age);
-            usersJunior.add(userJunior);
+    public void addUser(String name, int age, String type) {
+        User user = null;
+        switch (type.toLowerCase()) {
+            case "jr":
+                user = new Jr(name, age, 0);
+                break;
+            case "teen":
+                user = new Teen(name, age, 0);
+                break;
+            case "adult":
+                user = new Adult(name, age, 0);
+                break;
+            case "vip":
+                user = new VIP(name, age, 0);
+                break;
+            default:
+                System.out.println("Tipo de usuario no reconocido.");
         }
-        
+        users.add(user);
+
     }
-    public void addUserVip(int id,String name,int age){
-        UserVip userVip = new UserVip(id,name,age);
-        usersVip.add(userVip);
+
+    /**
+     * @return Lista de usuarios.
+     */
+    public ArrayList<User> getUsers() {
+        return users;
     }
 
     /**
      * Metodo que se encarga de buscar un usuario por su nombre
-     * @param name nombre del usuario a buscar
-     * @return el usuario si se encuentra, o null si no existe
+     *
+     * @param name Nombre del usuario a buscar.
+     * @return El usuario si se encuentra, o null si no existe.
      */
-    public User findUserByName(String name){
-        for (User user : users) {
-            if (user.getName().equalsIgnoreCase(name)) {
-                return user;
-            }
-        }
-        return null;
+    public User findUserByName(String name) {
+        return users.stream()
+                .filter(user -> user.getName().equalsIgnoreCase(name))
+                .findFirst()
+                .orElse(null);
     }
-
-    /**
-     * Metodo que se encarga de devolver los usuarios
-     */
-    public ArrayList<User> getUsers(){
-        return this.users;
-    }
-
-    public int generateId(){
-        return users.size() + 1;
-    }
-
-
-
 }
+
+

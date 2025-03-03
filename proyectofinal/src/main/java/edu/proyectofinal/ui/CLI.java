@@ -4,15 +4,23 @@ import edu.proyectofinal.data.Book;
 import edu.proyectofinal.data.Loan;
 import edu.proyectofinal.data.User;
 import edu.proyectofinal.process.BookManager;
+import edu.proyectofinal.process.Config;
 import edu.proyectofinal.process.LoanManager;
 import edu.proyectofinal.process.UserManager;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+/**
+ * Clase CLI en la que representa la interfaz de línea de comandos de la biblioteca.
+ * Se encarga de interactuar con el usuario, mostrar el menú, recibir entradas y llamar a
+ * los metodos correspondientes de los gestores (BookManager, UserManager, LoanManager).
+ */
+
 public class CLI {
     static Language language = new Language();
-    static BookManager bookManager = new BookManager();
-    static UserManager userManager = new UserManager();
+    static BookManager bookManager = new BookManager(); //llegar a checar si es que se debe modificar o quitar
+    static UserManager userManager = new UserManager(); //llegar a checar si es que se debe modificar o quitar
+
     /**
      *  Metodo que muestra el menu
      */
@@ -26,42 +34,55 @@ public class CLI {
         System.out.println(language.OPTION_5);
     }
 
-    public static void showBooks(){
-        int numLibro = 1;
-        for (Book book : bookManager.getBooks()){
-
-            System.out.println("=====================================================");
-            System.out.println(""+language.BOOK + ": " + numLibro);
-            System.out.println("=====================================================");
-            System.out.println(""+language.TITTLE + ": " + book.getTitle());
-            System.out.println(""+language.AUTHOR + ": " + book.getAuthor());
-            System.out.println(""+language.DESCRIPTION + ": " + book.getgenrer());
-            System.out.println(""+language.TOTALCOPIES + ": " + book.getTotalCopies());
-            System.out.println(""+language.AVAILABLECOPIES + ": " + book.getAvailabilityCopies());
-
-            numLibro = numLibro + 1;
-        }
+    /**
+     * Metodo para mostrar la lista de libros.
+     * Utiliza programación funcional.
+     *
+     * @param bookManager Objeto BookManager que contiene la lista de libros.
+     */
+    private static void showBooks(BookManager bookManager) {
+        System.out.println("\nLibros registrados:");
+        bookManager.getBooks().forEach(book -> {
+            System.out.println("=====================================");
+            System.out.println(language.BOOK + ": " + book.getTitle());
+            System.out.println(language.TITLE + ": " + book.getTitle());
+            System.out.println(language.AUTHOR + ": " + book.getAuthor());
+            System.out.println(language.DESCRIPTION + ": " + book.getDescription());
+            System.out.println(language.TOTALCOPIES + ": " + book.getTotalCopies());
+            System.out.println(language.AVAILABLECOPIES + ": " + book.getAvailabilityCopies());
+            System.out.println("=====================================");
+        });
     }
 
-
-    public static void showUsers(){
-        for(User user : userManager.getUsers()){
-            System.out.println("=============================================");
-            System.out.println(language.NAMES + ": " + user.getName());
-            System.out.println("=============================================");
+    /**
+     * Metodo auxiliar para mostrar la lista de usuarios.
+     * Utiliza programación funcional (forEach con lambda) para iterar y mostrar cada usuario.
+     *
+     * @param userManager Objeto UserManager que contiene la lista de usuarios.
+     */
+    private static void showUsers(UserManager userManager) {
+        if (userManager.getUsers().isEmpty()) {
+            System.out.println("====================================");
+            System.out.println(language.NO_USERS);
+            System.out.println("====================================");
+        } else {
+            System.out.println("\nUsuarios registrados:");
+            userManager.getUsers().forEach(user -> {
+                System.out.println("=====================================");
+                System.out.println(user);
+                System.out.println("=====================================");
+            });
         }
     }
 
 
     /**
-     * Metodo que corre la aplicacion
+     * Metodo que corre la aplicación.
      */
     public static void runApp() {
         UserManager userManager = new UserManager();
         LoanManager loanManager = new LoanManager();
-
-
-
+        BookManager bookManager = new BookManager(); //checar si tiene de donde ser llamado
 
         Scanner scanner = new Scanner(System.in);
         language = new En();
@@ -97,80 +118,105 @@ public class CLI {
             }
         }
 
+
         showMenu();
 
-        int opciones = 0;
+        int option = 0;
 
-        while (opciones != 6) {
+        while (option != 6) {
             try {
-                opciones = scanner.nextInt();
+                option = scanner.nextInt();
                 scanner.nextLine();
             } catch (InputMismatchException e) {
                 System.out.println(language.INVALID_OPTION);
                 scanner.nextLine();
+                continue;
             }
-            switch (opciones) {
+            switch (option) {
                 case 1:
-                    showBooks();
-                    break;
+                    showBooks(bookManager); //también llegué a agregar
                 case 2:
                     if (userManager.getUsers().isEmpty()) {
                         System.out.println("====================================");
                         System.out.println(language.NO_USERS);
                         System.out.println("====================================");
                     }else {
-                        showUsers();
+                        showUsers(userManager); //lo que también agrego
+
                     }
 
                     break;
                 case 3:
                     System.out.println(language.ENTER_USER_NAME);
-                    String nombre = scanner.nextLine();
-
-                    userManager.addUser(1,nombre,15);
+                    String name = scanner.nextLine();
+                    System.out.println("Ingrese la edad del usuario: ");
+                    int age = scanner.nextInt();
+                    scanner.nextLine();
+                    System.out.println("Seleccione el tipo de usuario que es:");
+                    System.out.println("1. " + Config.get("Jr") + " (6-12 años)");
+                    System.out.println("2. " + Config.get("Teens") + " (13-17 años)");
+                    System.out.println("3. " + Config.get("Adult") + " (Adultos)");
+                    System.out.println("4. " + Config.get("VIP") + " (Adultos VIP)");
+                    int typeOption = scanner.nextInt();
+                    scanner.nextLine();
+                    String type;
+                    switch(typeOption) {
+                        case 1:
+                            type = "jr";
+                            break;
+                        case 2:
+                            type = "teen";
+                            break;
+                        case 3:
+                            type = "adult";
+                            break;
+                        case 4:
+                            type = "vip";
+                            break;
+                        default:
+                            System.out.println("Opción inválida. Se creará como Adult por defecto.");
+                            type = "adult";
+                    }
+                    userManager.addUser(name, age, type);
+                    System.out.println("Usuario agregado exitosamente.");
                     break;
+
                 case 4:
                     System.out.println(language.ENTER_BOOK_NAME);
-                    String nombreLibro = scanner.nextLine();
+                    String bookName = scanner.nextLine(); //cambiar nombre del español hacia el ingles
                     System.out.println(language.ENTER_AUTHOR_NAME);
-                    String autorLibro = scanner.nextLine();
-                    System.out.println("Descripcion");
-                    String descripcionLibro = scanner.nextLine();
+                    String authorName = scanner.nextLine(); //cambiar nombre del español hacia el ingles
+                    System.out.println("Descripción");
+                    String description = scanner.nextLine(); //cambiar nombre del español hacia el ingles
                     System.out.println("Copias totales del libro");
-                    int copiasTotales = scanner.nextInt();scanner.nextLine();
+                    int totalCopies = scanner.nextInt(); //cambiar nombre del español hacia el ingles
+                    scanner.nextLine();
 
-                    bookManager.registerBook(bookManager.generateId(), nombreLibro,autorLibro,descripcionLibro,copiasTotales,copiasTotales);
-
+                    bookManager.registerBook(bookName, authorName, description, totalCopies, totalCopies);
+                    System.out.println(language.BOOK_ADDED);
                     break;
-                case 5:
-                    showUsers();
+
+                case 5:  //prestar libro modificación
                     System.out.println(language.ENTER_USER_NAME);
-                    String usuario = scanner.nextLine();
-                    showBooks();
-                    System.out.println(language.ENTER_BOOK_LOAN);
-                    String libro = scanner.nextLine();
-                    System.out.println("Ingrese la fecha en la que terminara del prestamo");
-                    String fechaFin = scanner.nextLine();
-                    System.out.println("Ingrese la fecha en la que inicio el prestamo");
-                    String fechaInicio = scanner.nextLine();
-                    if (userManager.findUserByName(usuario) == null) {
-                        System.out.println("No usuario encontrado");
-                    }else {
-                        loanManager.addLean(libro, fechaFin, fechaInicio, true, userManager.findUserByName(usuario));
-
+                    String userName = scanner.nextLine();
+                    User selectedUser = userManager.findUserByName(userName);
+                    if (selectedUser == null) {
+                        System.out.println("Usuario no encontrado.");
+                        break;
                     }
+                    System.out.println(language.ENTER_BOOK_LOAN);
+                    String bookTitle = scanner.nextLine();
 
+                    // Se obtiene el resultado del préstamo y se muestra el mensaje
+                    LoanManager.LoanResult result = loanManager.loanBook(bookManager, bookTitle, selectedUser);
+                    System.out.println(result.getMessage());
+                    break;
 
-                    showMenu();
-                    break;
-                case 6:
-                    System.out.println(language.GOODBYE);
-                    break;
-                default:
-                    System.out.println(language.INVALID_OPTION);
-                    break;
             }
-            showMenu();
+
+
         }
+        showMenu();
     }
+    //scanner.close();
 }

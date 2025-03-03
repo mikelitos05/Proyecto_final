@@ -37,7 +37,7 @@ public class Menu extends javax.swing.JFrame {
 
 
         // Configurar colores
-        java.awt.Color backgroundColor = new java.awt.Color(245, 245, 245);
+        java.awt.Color backgroundColor = new java.awt.Color(255, 245, 245);
         java.awt.Color primaryColor = new java.awt.Color(0, 150, 136);  // Verde agua
         java.awt.Color accentColor = new java.awt.Color(255, 87, 34);   // Naranja
         java.awt.Color textColor = new java.awt.Color(33, 33, 33);      // Texto oscuro

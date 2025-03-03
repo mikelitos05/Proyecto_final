@@ -20,51 +20,42 @@ public class BookManager {
     }
 
     /**
-     * Metodo que carga libros precargados en la lista.
-     */
-
-
-    /**
-     * Registra un nuevo libro en la lista de libros y si ya existe un libro tambien lo registra pero al libro anterior se le agrega 1 en el total libros.
+     * Registra un nuevo libro en la lista de libros
+     * Si ya existe un libro, también lo registra
+     * Es acumulativo la cantidad en el total de libros.
      *
      */
-    public void registerBook(int id,String title, String author,String description,int totalCopies,int availableCopies) {
+    public void registerBook(String title, String author, String description, int totalCopies, int availableCopies) {
         if(findBookByTitle(title) == null) {
-            Book book = new Book(id,title, author, description, totalCopies, availableCopies);
+            Book book = new Book(title, author, description, totalCopies, availableCopies);
             books.add(book);
         }else{
             Book bookToModify = findBookByTitle(title);
-            bookToModify.setTotalCopies(bookToModify.getTotalCopies() + 1);
-            Book book = new Book(id,title, author, description, bookToModify.getTotalCopies() + 1, availableCopies);
-            books.add(book);
-        }
+            bookToModify.setTotalCopies(bookToModify.getTotalCopies()+ 1);
+            Book book = new Book(title, author, description, bookToModify.getTotalCopies() + 1, availableCopies);
 
+        }
     }
 
     /**
      * Obtiene la lista completa de libros registrados.
-     *
      * @return Una lista de objetos {@link Book}.
      */
     public List<Book> getBooks() {
-        return this.books;
+        return books;
     }
 
     /**
      * Busca un libro por su título.
-     *
+     * Utilización de programación funcional.
      * @param title El título del libro que se desea buscar.
      * @return El objeto {@link Book} si se encuentra, o {@code null} si no existe.
      */
     public Book findBookByTitle(String title) {
-        if (title == null) return null;
-
-        for (Book book : books) {
-            if (book.getTitle().equalsIgnoreCase(title)) {
-                return book;
-            }
-        }
-        return null;
+        return books.stream()
+                .filter(book -> book.getTitle().equalsIgnoreCase(title))
+                .findFirst()
+                .orElse(null);
     }
 
     /**
@@ -83,18 +74,4 @@ public class BookManager {
     public boolean isEmpty() {
         return books.isEmpty();
     }
-
-    /**
-     * Metodo que se encarga de generar el id
-     * @return
-     */
-    public int generateId(){
-        return books.size() + 1;
-    }
 }
-
-
-
-
-
-   
