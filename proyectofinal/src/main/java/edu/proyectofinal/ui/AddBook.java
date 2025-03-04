@@ -147,7 +147,7 @@ public class AddBook extends javax.swing.JFrame {
         }else{
             BookManager bookManager = new BookManager();
             //Esta pendiente arreglar lo de copias totales
-            bookManager.registerBook(bookManager.generateId(), fieldNameBook.getText(),fielNameAuthor.getText(),fieldDescription.getText(),1,1);
+            bookManager.registerBook(fieldNameBook.getText(),fielNameAuthor.getText(),fieldDescription.getText(),1);
             JOptionPane.showMessageDialog(AddBook.this, "Libro registrado con exito");
             tablBooks.addRow(new Object[]{fieldNameBook.getText(),fielNameAuthor.getText(),fieldDescription.getText(),1,1});
             this.dispose();

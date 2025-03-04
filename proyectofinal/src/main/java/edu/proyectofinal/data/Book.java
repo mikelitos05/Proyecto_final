@@ -10,7 +10,7 @@ import java.util.UUID; //aquí es en donde se genera automáticamente al libro e
 public class Book {
     private String title;
     private String author;
-    private String description;
+    private String genre;
     private int totalCopies;
     private ArrayList<String> copyIds;
 
@@ -18,14 +18,13 @@ public class Book {
      * Constructor que inicializa un libro y genera identificadores únicos para cada copia.
      * @param title Título del libro.
      * @param author Autor del libro.
-     * @param description Descripción del libro.
+     * @param genre Descripción del libro.
      * @param totalCopies Número total de copias.
-     * @param availableCopies (No se utiliza; se asume que todas las copias están disponibles inicialmente)
      */
-    public Book(String title, String author, String description, int totalCopies, int availableCopies) {
+    public Book(String title, String author, String genre, int totalCopies) {
         this.title = title;
         this.author = author;
-        this.description = description;
+        this.genre = genre;
         this.totalCopies = totalCopies;
         this.copyIds = new ArrayList<>();
         for (int i = 0; i < totalCopies; i++) {
@@ -49,12 +48,12 @@ public class Book {
         this.author = author;
     }
 
-    public String getDescription() {
-        return description;
+    public String getGenre() {
+        return genre;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setGenre(String genre) {
+        this.genre = genre;
     }
 
     public int getTotalCopies(){

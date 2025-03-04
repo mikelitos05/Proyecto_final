@@ -27,9 +27,9 @@ public class Ru extends Language {
         BOOK = "Книга";
         AUTHOR = "Автор";
         DESCRIPTION = "Описание";
-        TOTALCOPIES = "Всего копий";
-        AVAILABLECOPIES = "Доступных копий";
-        TITTLE = "Квалификация";
+        TOTAL_COPIES = "Всего копий";
+        AVAILABLE_COPIES = "Доступных копий";
+        TITLE = "Квалификация";
 
     }
 }

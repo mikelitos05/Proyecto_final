@@ -318,17 +318,17 @@ public class Menu extends javax.swing.JFrame {
             modelBooks.addRow(new Object[]{
                     book.getTitle(),
                     book.getAuthor(),
-                    book.getgenrer(),
+                    book.getGenre(),
                     book.getTotalCopies(),
-                    book.getAvailableCopies()
+                    book.getTotalCopies()
             });
         }
         for (User user : userManager.getUsers()) {
             modelUsers.addRow(new Object[]{
                     user.getName(),
                     user.getAge(),
-                    "0",
-                    "0"
+                    user.getActiveLend(),
+                    userManager.findUserByName(user.getName()).getUserType()
             });
         }
     }
@@ -345,7 +345,7 @@ public class Menu extends javax.swing.JFrame {
 
     private void btnAddUserActionPerformed(java.awt.event.ActionEvent evt) {
         DefaultTableModel modelUsers = (DefaultTableModel) tablUsers.getModel();
-        AddUser addUser = new AddUser(modelUsers);
+        AddUser addUser = new AddUser(modelUsers, userManager);
         addUser.setVisible(true);
     }
 

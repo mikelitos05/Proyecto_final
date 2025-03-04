@@ -13,14 +13,16 @@ import javax.swing.text.DocumentFilter;
 public class AddUser extends javax.swing.JFrame {
 
     private DefaultTableModel tablUsers;
+    private UserManager userManager;
 
     /**
      * Creates new form AddUser
      */
-    public AddUser(DefaultTableModel tablUsers) {
+    public AddUser(DefaultTableModel tablUsers, UserManager userManager) {
         initComponents();
         this.tablUsers = tablUsers;
         setLocationRelativeTo(null);
+        this.userManager = userManager;
     }
 
     /**
@@ -157,19 +159,20 @@ public class AddUser extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(AddUser.this, "Edad invalida (0-140 años)");
                 }
                 else {
-                    UserManager userManager = new UserManager();
                     if(cBVip.isSelected()){
                         if(edad < 18){
                             JOptionPane.showMessageDialog(AddUser.this, "No se puede registrar un usuario VIP menor de edad");
                             return;
                         }
-                        userManager.addUserVip(userManager.generateId(),fieldName.getName(),edad);
+                        userManager.addUser(fieldName.getName(),edad,"vip");
                         tablUsers.addRow(new Object[]{fieldName.getText(),edad,0,"VIP"});
                         JOptionPane.showMessageDialog(AddUser.this, "Usuario registrado con exito");
                         this.dispose();
                     }else {
-                        userManager.addUser(userManager.generateId(), fieldName.getName(), edad);
-                        tablUsers.addRow(new Object[]{fieldName.getText(), edad, 0, "No hay status aun"});
+                        userManager.addUser(fieldName.getText(), edad, null);
+                        tablUsers.addRow(new Object[]{fieldName.getText(), edad, 0, userManager.findUserByName(fieldName.getText()).getUserType()});
+
+
                         JOptionPane.showMessageDialog(AddUser.this, "Usuario registrado con exito");
                         this.dispose();
                     }

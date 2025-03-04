@@ -30,7 +30,7 @@ public class Jr extends User {
 
     @Override
     public String getUserType() {
-        return Config.get("Jr") != null ? Config.get("Jr") : "Jr";
+        return "Jr";
     }
 }
 

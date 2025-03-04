@@ -30,10 +30,10 @@ public class Main {
         for(String line : lines){
             String[] tokens = line.split(":");
             if(tokens[0].equals("Libro")){
-                bookManager.registerBook(Integer.valueOf(tokens[1]),tokens[2],tokens[3],tokens[4],Integer.valueOf(tokens[5]),Integer.valueOf(tokens[6]));
+                bookManager.registerBook(tokens[1],tokens[2],tokens[3],Integer.valueOf(tokens[4]));
             }
             if (tokens[0].equals("Usuario")){
-                userManager.addUser(Integer.valueOf(tokens[1]),tokens[2],Integer.valueOf(tokens[3]));
+                userManager.addUser(tokens[1],Integer.valueOf(tokens[2]),null);
             }
         }
 

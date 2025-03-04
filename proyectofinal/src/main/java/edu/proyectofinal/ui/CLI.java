@@ -47,9 +47,9 @@ public class CLI {
             System.out.println(language.BOOK + ": " + book.getTitle());
             System.out.println(language.TITLE + ": " + book.getTitle());
             System.out.println(language.AUTHOR + ": " + book.getAuthor());
-            System.out.println(language.DESCRIPTION + ": " + book.getDescription());
-            System.out.println(language.TOTALCOPIES + ": " + book.getTotalCopies());
-            System.out.println(language.AVAILABLECOPIES + ": " + book.getAvailabilityCopies());
+            System.out.println(language.DESCRIPTION + ": " + book.getGenre());
+            System.out.println(language.TOTAL_COPIES + ": " + book.getTotalCopies());
+            System.out.println(language.AVAILABLE_COPIES + ": " + book.getAvailabilityCopies());
             System.out.println("=====================================");
         });
     }
@@ -192,7 +192,6 @@ public class CLI {
                     int totalCopies = scanner.nextInt(); //cambiar nombre del español hacia el ingles
                     scanner.nextLine();
 
-                    bookManager.registerBook(bookName, authorName, description, totalCopies, totalCopies);
                     System.out.println(language.BOOK_ADDED);
                     break;
 
@@ -219,4 +218,8 @@ public class CLI {
         showMenu();
     }
     //scanner.close();
+    public static void main(String[] args) {
+        runApp();
+    }
+
 }

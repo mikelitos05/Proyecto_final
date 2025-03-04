@@ -27,9 +27,9 @@ public class En extends Language {
         BOOK = "Book";
         AUTHOR = "Author";
         DESCRIPTION = "Description";
-        TOTALCOPIES = "Total copies";
-        AVAILABLECOPIES = "Available copies";
-        TITTLE = "Tittle";
+        TOTAL_COPIES = "Total copies";
+        AVAILABLE_COPIES = "Available copies";
+        TITLE = "Title";
 
     }
 }

@@ -27,9 +27,9 @@ public class Pr extends Language {
         BOOK = "Livro";
         AUTHOR = "Autor";
         DESCRIPTION = "Descrição";
-        TOTALCOPIES = "Cópias totais";
-        AVAILABLECOPIES = "Cópias disponíveis";
-        TITTLE = "Qualificação";
+        TOTAL_COPIES = "Cópias totais";
+        AVAILABLE_COPIES = "Cópias disponíveis";
+        TITLE = "Qualificação";
 
     }
 }

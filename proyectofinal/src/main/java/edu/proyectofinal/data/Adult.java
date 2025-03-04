@@ -30,7 +30,7 @@ public class Adult extends User {
 
     @Override
     public String getUserType() {
-        return Config.get("Adult") != null ? Config.get("Adult") : "Adult";
+        return "Adult";
     }
 }
 

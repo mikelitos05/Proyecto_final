@@ -27,8 +27,8 @@ public class Es extends Language {
         DESCRIPTION = "Descripcion";
         NAMES = "Names";
         LOANS = "Loans";
-        TITTLE = "Titulo";
-        TOTALCOPIES = "Copias totales";
-        AVAILABLECOPIES = "Copias disponibles";
+        TITLE = "Titulo";
+        TOTAL_COPIES = "Copias totales";
+        AVAILABLE_COPIES = "Copias disponibles";
     }
 }

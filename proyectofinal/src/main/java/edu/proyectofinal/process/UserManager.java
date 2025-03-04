@@ -28,21 +28,14 @@ public class UserManager {
      */
     public void addUser(String name, int age, String type) {
         User user = null;
-        switch (type.toLowerCase()) {
-            case "jr":
-                user = new Jr(name, age, 0);
-                break;
-            case "teen":
-                user = new Teen(name, age, 0);
-                break;
-            case "adult":
-                user = new Adult(name, age, 0);
-                break;
-            case "vip":
-                user = new VIP(name, age, 0);
-                break;
-            default:
-                System.out.println("Tipo de usuario no reconocido.");
+        if (age > 5 && age < 13) {
+            user = new Jr(name, age, 0);
+        } else if (age > 12 && age < 18) {
+            user = new Teen(name, age, 0);
+        } else if (age > 17) {
+            user = new Adult(name, age, 0);
+        } else if (type.equalsIgnoreCase("VIP")) {
+            user = new VIP(name, age, 0);
         }
         users.add(user);
 

@@ -25,14 +25,14 @@ public class BookManager {
      * Es acumulativo la cantidad en el total de libros.
      *
      */
-    public void registerBook(String title, String author, String description, int totalCopies, int availableCopies) {
+    public void registerBook(String title, String author, String genrer, int totalCopies) {
         if(findBookByTitle(title) == null) {
-            Book book = new Book(title, author, description, totalCopies, availableCopies);
+            Book book = new Book(title, author, genrer, totalCopies);
             books.add(book);
         }else{
             Book bookToModify = findBookByTitle(title);
             bookToModify.setTotalCopies(bookToModify.getTotalCopies()+ 1);
-            Book book = new Book(title, author, description, bookToModify.getTotalCopies() + 1, availableCopies);
+            Book book = new Book(title, author, genrer, bookToModify.getTotalCopies() + 1);
 
         }
     }

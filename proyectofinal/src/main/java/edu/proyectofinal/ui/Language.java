@@ -26,8 +26,8 @@ public class Language {
     protected String BOOK;
     protected String AUTHOR;
     protected String DESCRIPTION;
-    protected String TOTALCOPIES;
-    protected String AVAILABLECOPIES;
-    protected String TITTLE;
+    protected String TOTAL_COPIES;
+    protected String AVAILABLE_COPIES;
+    protected String TITLE;
 
 }

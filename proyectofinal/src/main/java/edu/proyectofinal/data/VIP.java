@@ -30,7 +30,7 @@ public class VIP extends User {
 
     @Override
     public String getUserType() {
-        return Config.get("VIP") != null ? Config.get("VIP") : "VIP";
+        return "VIP";
     }
 }
 
