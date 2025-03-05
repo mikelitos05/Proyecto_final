@@ -51,17 +51,22 @@ public class LoanManager {
         loans.add(loan);
     }
 
-    public void addLoan(Book book, User user, String startDate, Loan.LoanStatus status){
+    public String addLoan(Book book, User user, String startDate, Loan.LoanStatus status){
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         LocalDate endDate = LocalDate.parse(startDate, formatter);
-        endDate = endDate.plusDays(7);
+        String stringUser = user.getUserType();
+
+        endDate = endDate.plusDays(user.getLoanDurationDays());
         String stringEndDate = endDate.format(formatter);
 
-
-
-        Loan loan = new Loan(book,user,startDate,stringEndDate,calculateStatus(startDate, stringEndDate),loans.size() + 1);
-
-        loans.add(loan);
+        if (user.getActiveLend() == user.getMaxLoans() && book.getAvailabilityCopies() > 1) {
+            return "No se pueden tener mas"+user.getUserType() +"prestamos siendo usuario VIP";
+        } else {
+            Loan loan = new Loan(book, user, startDate, stringEndDate, calculateStatus(startDate, stringEndDate), loans.size() + 1);
+            user.setActiveLend(user.getActiveLend() + 1);
+            loans.add(loan);
+        }
+        return "Usuario no disponible";
     }
 
 

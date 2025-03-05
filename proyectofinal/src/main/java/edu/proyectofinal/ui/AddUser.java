@@ -155,8 +155,8 @@ public class AddUser extends javax.swing.JFrame {
             try {
                 int edad = Integer.parseInt(fieldAge.getText().trim());
 
-                if (edad < 0 || edad > 140) {
-                    JOptionPane.showMessageDialog(AddUser.this, "Edad invalida (0-140 años)");
+                if (edad < 6|| edad > 140) {
+                    JOptionPane.showMessageDialog(AddUser.this, "Edad invalida (6-140 años)");
                 }
                 else {
                     if(cBVip.isSelected()){
@@ -165,12 +165,12 @@ public class AddUser extends javax.swing.JFrame {
                             return;
                         }
                         userManager.addUser(fieldName.getName(),edad,"vip");
-                        tablUsers.addRow(new Object[]{fieldName.getText(),edad,0,"VIP"});
+                        tablUsers.addRow(new Object[]{userManager.getUsers().size(),fieldName.getText(),edad,0,"VIP"});
                         JOptionPane.showMessageDialog(AddUser.this, "Usuario registrado con exito");
                         this.dispose();
                     }else {
                         userManager.addUser(fieldName.getText(), edad, null);
-                        tablUsers.addRow(new Object[]{tablUsers.getRowCount() + 1,fieldName.getText(), edad, 0, userManager.findUserByName(fieldName.getText()).getUserType()});
+                        tablUsers.addRow(new Object[]{userManager.getUsers().size(),tablUsers.getRowCount() + 1,fieldName.getText(), edad, 0, userManager.findUserByName(fieldName.getText()).getUserType()});
 
 
                         JOptionPane.showMessageDialog(AddUser.this, "Usuario registrado con exito");

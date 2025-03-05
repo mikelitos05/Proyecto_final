@@ -147,12 +147,12 @@ public class MakeLoan extends javax.swing.JFrame {
         }else{
             String[] userParts = selectedUser.split(" - ");
             String userName = userParts[0];
-
+            int id = Integer.valueOf(userParts[1]);
             String[] bookParts = selectedUser.split(" - ");
             String bookTitle = bookParts[0];
 
             LocalDateTime today = LocalDateTime.now();
-            LocalDateTime endDate = today.plusDays(7);
+            LocalDateTime endDate = today.plusDays(userManager.findUserById(id).getLoanDurationDays());
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
             String stringToday = today.format(formatter);
             String stringEndDate = endDate.format(formatter);

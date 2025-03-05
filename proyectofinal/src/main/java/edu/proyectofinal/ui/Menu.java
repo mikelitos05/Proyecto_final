@@ -7,137 +7,73 @@ import edu.proyectofinal.process.BookManager;
 import edu.proyectofinal.process.LoanManager;
 import edu.proyectofinal.process.UserManager;
 
+import javax.swing.table.DefaultTableModel;
+
 import javax.swing.*;
 import javax.swing.table.DefaultTableCellRenderer;
-import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
 import java.awt.*;
-import java.util.Locale;
-import java.util.ResourceBundle;
 
+/**
+ *
+ * @author Mike
+ */
 public class Menu extends javax.swing.JFrame {
+
 
     private BookManager bookManager;
     private UserManager userManager;
     private LoanManager loanManager;
-    private ResourceBundle resources;
-    private JMenu languageMenu;
-    private JMenuItem spanishItem;
-    private JMenuItem englishItem;
-
+    /**
+     * Creates new form Menu
+     */
     public Menu(BookManager bookManager, UserManager userManager, LoanManager loanManager) {
         this.loanManager = loanManager;
         this.bookManager = bookManager;
         this.userManager = userManager;
-
-        // Cargar recursos iniciales
-        resources = ResourceBundle.getBundle("edu.proyectofinal.i18n.Messages", Locale.getDefault());
-
         initComponents();
-        setupMenuBar();
         loadTables();
-        configureStyles();
-        updateUI();
 
-        // Configuración de la ventana
+
+        java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
+        this.setSize(screenSize.width, screenSize.height);
         this.setExtendedState(java.awt.Frame.MAXIMIZED_BOTH);
-    }
 
-    private void setupMenuBar() {
-        JMenuBar menuBar = new JMenuBar();
 
-        languageMenu = new JMenu();
-        spanishItem = new JMenuItem();
-        englishItem = new JMenuItem();
+        // Configurar colores
+        java.awt.Color backgroundColor = new java.awt.Color(255, 245, 245);
+        java.awt.Color primaryColor = new java.awt.Color(0, 150, 136);  // Verde agua
+        java.awt.Color accentColor = new java.awt.Color(255, 87, 34);   // Naranja
+        java.awt.Color textColor = new java.awt.Color(33, 33, 33);      // Texto oscuro
 
-        // Configurar acciones
-        spanishItem.addActionListener(e -> changeLocale(new Locale("es")));
-        englishItem.addActionListener(e -> changeLocale(Locale.ENGLISH));
-
-        languageMenu.add(spanishItem);
-        languageMenu.add(englishItem);
-        menuBar.add(languageMenu);
-
-        this.setJMenuBar(menuBar);
-    }
-
-    private void changeLocale(Locale locale) {
-        resources = ResourceBundle.getBundle("edu.proyectofinal.i18n.Messages", locale);
-        updateUI();
-    }
-
-    private void updateUI() {
-        // Actualizar menú
-        languageMenu.setText(resources.getString("menu.language"));
-        spanishItem.setText(resources.getString("language.spanish"));
-        englishItem.setText(resources.getString("language.english"));
-
-        // Actualizar etiquetas
-        jLabel1.setText(resources.getString("menu.books"));
-        jLabel2.setText(resources.getString("menu.loans"));
-        jLabel3.setText(resources.getString("menu.users"));
-
-        // Actualizar botones
-        btnAddBook.setText(resources.getString("button.addBook"));
-        btnAddUser.setText(resources.getString("button.addUser"));
-        btnMakeLoan.setText(resources.getString("button.makeLoan"));
-
-        // Actualizar encabezados de tablas
-        updateTableHeaders();
-    }
-
-    private void updateTableHeaders() {
-        // Libros
-        String[] bookColumns = {
-                resources.getString("book.title"),
-                resources.getString("book.author"),
-                resources.getString("book.genero"),
-                resources.getString("book.copies"),
-                resources.getString("book.available")
-        };
-        ((DefaultTableModel) tablBooks.getModel()).setColumnIdentifiers(bookColumns);
-
-        // Usuarios
-        String[] userColumns = {
-                resources.getString("user.id"),
-                resources.getString("user.name"),
-                resources.getString("user.age"),
-                resources.getString("user.loans"),
-                resources.getString("user.type")
-        };
-        ((DefaultTableModel) tablUsers.getModel()).setColumnIdentifiers(userColumns);
-
-        // Préstamos
-        String[] loanColumns = {
-                resources.getString("loan.user"),
-                resources.getString("loan.book"),
-                resources.getString("loan.startDate"),
-                resources.getString("loan.endDate"),
-                resources.getString("loan.daysLeft"),
-                resources.getString("loan.status")
-        };
-        ((DefaultTableModel) tablLoans.getModel()).setColumnIdentifiers(loanColumns);
-    }
-
-    private void configureStyles() {
-        Color backgroundColor = new Color(255, 245, 245);
-        Color primaryColor = new Color(0, 150, 136);
-        Color accentColor = new Color(255, 87, 34);
-
+        // Configurar fondo principal
         getContentPane().setBackground(backgroundColor);
 
+        // Estilizar botones
         styleButton(btnAddBook, primaryColor, Color.WHITE);
         styleButton(btnAddUser, primaryColor, Color.WHITE);
         styleButton(btnMakeLoan, accentColor, Color.WHITE);
 
+        // Estilizar tablas
         styleTable(tablBooks, primaryColor);
         styleTable(tablLoans, primaryColor);
         styleTable(tablUsers, primaryColor);
 
+        // Estilizar etiquetas
+        jLabel1.setForeground(primaryColor);
+        jLabel2.setForeground(primaryColor);
+        jLabel3.setForeground(primaryColor);
+
+        // Fuentes más modernas
         Font labelFont = new Font("Segoe UI", Font.BOLD, 18);
         jLabel1.setFont(labelFont);
         jLabel2.setFont(labelFont);
         jLabel3.setFont(labelFont);
+
+        // Bordes más modernos para los scroll panes
+        jScrollPane2.setBorder(BorderFactory.createEmptyBorder());
+        jScrollPane3.setBorder(BorderFactory.createEmptyBorder());
+        jScrollPane4.setBorder(BorderFactory.createEmptyBorder());
     }
 
     private void styleTable(JTable table, Color headerColor) {
@@ -152,11 +88,15 @@ public class Menu extends javax.swing.JFrame {
         table.setSelectionForeground(Color.WHITE);
         table.setGridColor(new Color(224, 224, 224));
 
+        // Renderer para filas alternadas
         table.setDefaultRenderer(Object.class, new DefaultTableCellRenderer() {
             @Override
             public Component getTableCellRendererComponent(JTable table, Object value,
                                                            boolean isSelected, boolean hasFocus, int row, int column) {
-                Component c = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
+
+                Component c = super.getTableCellRendererComponent(table, value,
+                        isSelected, hasFocus, row, column);
+
                 if (!isSelected) {
                     c.setBackground(row % 2 == 0 ? Color.WHITE : new Color(240, 240, 240));
                 }
@@ -165,6 +105,8 @@ public class Menu extends javax.swing.JFrame {
         });
     }
 
+
+    // Método auxiliar para estilizar botones
     private void styleButton(JButton button, Color bgColor, Color textColor) {
         button.setBackground(bgColor);
         button.setForeground(textColor);
@@ -175,6 +117,7 @@ public class Menu extends javax.swing.JFrame {
                 BorderFactory.createEmptyBorder(5, 15, 5, 15)
         ));
 
+        // Efecto hover
         button.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 button.setBackground(bgColor.darker());
@@ -186,13 +129,193 @@ public class Menu extends javax.swing.JFrame {
         });
     }
 
+    /**
+     * This method is called from within the constructor to initialize the form.
+     * WARNING: Do NOT modify this code. The content of this method is always
+     * regenerated by the Form Editor.
+     */
+    @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">
     private void initComponents() {
-        // Código generado por el diseñador de GUI (NetBeans/Swing)
-        // [El código original de initComponents permanece igual]
-        // ... (Mantener el código generado original sin cambios)
-    }
 
-    private void loadTables() {
+        btnAddBook = new javax.swing.JButton();
+        btnAddUser = new javax.swing.JButton();
+        btnMakeLoan = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tablBooks = new javax.swing.JTable();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        tablLoans = new javax.swing.JTable();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        tablUsers = new javax.swing.JTable();
+        jLabel3 = new javax.swing.JLabel();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        btnAddBook.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
+        btnAddBook.setText("Agregar libro");
+        btnAddBook.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddBookActionPerformed(evt);
+            }
+        });
+
+        btnAddUser.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
+        btnAddUser.setText("Agregar usuario");
+        btnAddUser.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddUserActionPerformed(evt);
+            }
+        });
+
+        btnMakeLoan.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
+        btnMakeLoan.setText("Hacer prestamo");
+        btnMakeLoan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMakeLoanActionPerformed(evt);
+            }
+        });
+
+        tablBooks.setModel(new javax.swing.table.DefaultTableModel(
+                                   new Object [][] {
+                                           {null, null, null, null, null},
+                                           {null, null, null, null, null},
+                                           {null, null, null, null, null},
+                                           {null, null, null, null, null}
+                                   },
+                                   new String [] {
+                                           "Titulo", "Autor", "Genero", "Copias", "Copias Disponibles"
+                                   }){
+                               @Override
+                               public boolean isCellEditable(int row, int column) {
+                                   return false;
+                               }
+                           }
+
+
+
+        );
+        jScrollPane2.setViewportView(tablBooks);
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel1.setText("Libros");
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel2.setText("Prestamos");
+
+        tablLoans.setModel(new javax.swing.table.DefaultTableModel(
+                                   new Object [][] {
+                                           {null, null, null, null, null, null},
+                                           {null, null, null, null, null, null},
+                                           {null, null, null, null, null, null},
+                                           {null, null, null, null, null, null}
+                                   },
+                                   new String [] {
+                                           "Usuario", "Libro", "Fecha del prestamo", "Limite del prestamo", "Dias disponibles", "Status"
+                                   }){
+                               @Override
+                               public boolean isCellEditable(int row, int column) {
+                                   return false;
+                               }
+                           }
+        );
+        tablLoans.setToolTipText("");
+        jScrollPane3.setViewportView(tablLoans);
+
+
+        tablUsers.setModel(new javax.swing.table.DefaultTableModel(
+                                   new Object [][] {
+                                           {null, null, null, null, null},
+                                           {null, null, null, null, null},
+                                           {null, null, null, null, null},
+                                           {null, null, null, null, null}
+                                   },
+                                   new String [] {
+                                           "ID", "Nombre", "Edad", "Prestamos", "Tipo de usuario"
+                                   }){
+                               @Override
+                               public boolean isCellEditable(int row, int column) {
+                                   return false;
+                               }
+                           }
+        );
+
+
+        tablUsers.setToolTipText("");
+        jScrollPane4.setViewportView(tablUsers);
+
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel3.setText("Usuarios");
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                                .addGap(38, 38, 38)
+                                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 494, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(12, 12, 12)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(btnMakeLoan, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(btnAddUser, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(btnAddBook, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(layout.createSequentialGroup()
+                                                .addGap(12, 12, 12)
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 833, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 833, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                                .addGap(400, 400, 400)
+                                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(345, 345, 345)))
+                                .addContainerGap(257, Short.MAX_VALUE))
+                        .addGroup(layout.createSequentialGroup()
+                                .addGap(254, 254, 254)
+                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel1)
+                                .addGap(403, 403, 403))
+        );
+        layout.setVerticalGroup(
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(layout.createSequentialGroup()
+                                                .addGap(12, 12, 12)
+                                                .addComponent(jLabel3)
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addGroup(layout.createSequentialGroup()
+                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 653, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                        .addGroup(layout.createSequentialGroup()
+                                                                .addGap(238, 238, 238)
+                                                                .addComponent(btnAddBook, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                .addGap(18, 18, 18)
+                                                                .addComponent(btnAddUser, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                .addGap(18, 18, 18)
+                                                                .addComponent(btnMakeLoan, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                        .addGroup(layout.createSequentialGroup()
+                                                .addContainerGap()
+                                                .addComponent(jLabel1)
+                                                .addGap(10, 10, 10)
+                                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(12, 12, 12)
+                                                .addComponent(jLabel2)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addContainerGap(110, Short.MAX_VALUE))
+        );
+
+        pack();
+    }// </editor-fold>
+
+
+
+
+
+    private void loadTables(){
         DefaultTableModel modelBooks = (DefaultTableModel) tablBooks.getModel();
         DefaultTableModel modelLoans = (DefaultTableModel) tablLoans.getModel();
         DefaultTableModel modelUsers = (DefaultTableModel) tablUsers.getModel();
@@ -209,21 +332,25 @@ public class Menu extends javax.swing.JFrame {
                     book.getTotalCopies()
             });
         }
-
         for (User user : userManager.getUsers()) {
             modelUsers.addRow(new Object[]{
                     user.getId(),
                     user.getName(),
                     user.getAge(),
                     user.getActiveLend(),
-                    user.getUserType().toString()
+                    userManager.findUserByName(user.getName()).getUserType()
             });
         }
 
-        for (Loan loan : loanManager.getLoans()) {
+        for(Loan loan : loanManager.getLoans()){
+
+            User user = loan.getUser();
+            Book book = loan.getBook();
+
+
             modelLoans.addRow(new Object[]{
-                    loan.getUser().getName(),
-                    loan.getBook().getTitle(),
+                    user.getName(),
+                    book.getTitle(),
                     loan.getStartDate(),
                     loan.getEndDate(),
                     loan.calculateDaysBetween(),
@@ -232,10 +359,13 @@ public class Menu extends javax.swing.JFrame {
         }
     }
 
-    // Métodos de acción para los botones (sin cambios)
+
+
+
+
     private void btnAddBookActionPerformed(java.awt.event.ActionEvent evt) {
         DefaultTableModel modelBooks = (DefaultTableModel) tablBooks.getModel();
-        AddBook addBook = new AddBook(modelBooks, bookManager);
+        AddBook addBook = new AddBook(modelBooks,bookManager);
         addBook.setVisible(true);
     }
 
@@ -247,11 +377,15 @@ public class Menu extends javax.swing.JFrame {
 
     private void btnMakeLoanActionPerformed(java.awt.event.ActionEvent evt) {
         DefaultTableModel modelLoans = (DefaultTableModel) tablLoans.getModel();
-        MakeLoan makeloan = new MakeLoan(modelLoans, loanManager, userManager, bookManager);
+        MakeLoan makeloan = new MakeLoan(modelLoans,loanManager,userManager,bookManager);
         makeloan.setVisible(true);
+
+
     }
 
-    // Variables declaration - no modificar
+
+
+    // Variables declaration - do not modify
     private javax.swing.JButton btnAddBook;
     private javax.swing.JButton btnAddUser;
     private javax.swing.JButton btnMakeLoan;

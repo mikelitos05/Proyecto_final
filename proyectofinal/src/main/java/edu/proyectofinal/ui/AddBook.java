@@ -52,7 +52,7 @@ public class AddBook extends javax.swing.JFrame {
 
         jLabel2.setText("Ingrese el autor de el libro");
 
-        jLabel3.setText("Ingrese una descripcion corta sobre el libro");
+        jLabel3.setText("Ingrese el genero sobre el libro");
 
         fieldNameBook.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
