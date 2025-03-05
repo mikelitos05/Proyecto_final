@@ -27,12 +27,12 @@ public class BookManager {
      */
     public void registerBook(String title, String author, String genrer, int totalCopies) {
         if(findBookByTitle(title) == null) {
-            Book book = new Book(title, author, genrer, totalCopies);
+            Book book = new Book(title, author, genrer, totalCopies, books.size() + 1 );
             books.add(book);
         }else{
             Book bookToModify = findBookByTitle(title);
             bookToModify.setTotalCopies(bookToModify.getTotalCopies()+ 1);
-            Book book = new Book(title, author, genrer, bookToModify.getTotalCopies() + 1);
+            Book book = new Book(title, author, genrer, bookToModify.getTotalCopies() + 1, books.size() + 1 );
 
         }
     }
@@ -57,6 +57,8 @@ public class BookManager {
                 .findFirst()
                 .orElse(null);
     }
+
+
 
     /**
      * Obtiene el número total de libros registrados en la lista.

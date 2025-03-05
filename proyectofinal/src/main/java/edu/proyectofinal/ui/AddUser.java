@@ -170,7 +170,7 @@ public class AddUser extends javax.swing.JFrame {
                         this.dispose();
                     }else {
                         userManager.addUser(fieldName.getText(), edad, null);
-                        tablUsers.addRow(new Object[]{fieldName.getText(), edad, 0, userManager.findUserByName(fieldName.getText()).getUserType()});
+                        tablUsers.addRow(new Object[]{tablUsers.getRowCount() + 1,fieldName.getText(), edad, 0, userManager.findUserByName(fieldName.getText()).getUserType()});
 
 
                         JOptionPane.showMessageDialog(AddUser.this, "Usuario registrado con exito");

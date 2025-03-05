@@ -1,12 +1,17 @@
 package edu.proyectofinal.data;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
+
 /**
  * Loan, Clase en donde se hacen los préstamos.
  */
 
 public class Loan {
-    private String book;
-    private String user;
+    private int id;
+    private Book book;
+    private User user;
     private String startDate;
     private String endDate;
     private LoanStatus status;
@@ -20,6 +25,7 @@ public class Loan {
         DELAYED, //Retraso en el préstamo.
     }
 
+
     /**
      * Metodo constructor de Loan.
      * @param book
@@ -28,22 +34,30 @@ public class Loan {
      * @param endDate
      * @param status Estado del préstamo.
      */
-    public Loan(String book, String user, String startDate, String endDate, LoanStatus status) {
-        if (book == null || user == null || startDate == null || endDate == null || status == null) {
-            throw new IllegalArgumentException("No hay información disponible. Ningún parámetro puede estar nulo.");
-        }
+    public Loan(Book book, User user, String startDate, String endDate, LoanStatus status, int id) {
+
         this.book = book;
         this.user = user;
         this.startDate = startDate;
         this.endDate = endDate;
         this.status = status;
+        this.id = id;
     }
 
-    public String getBook() {
+
+    public long calculateDaysBetween() {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        LocalDate start = LocalDate.parse(startDate, formatter);
+        LocalDate end = LocalDate.parse(endDate, formatter);
+
+        return ChronoUnit.DAYS.between(start, end);
+    }
+
+    public Book getBook() {
         return book;
     }
 
-    public void setBook(String book) {
+    public void setBook(Book book) {
         if (book == null) {
             throw new IllegalArgumentException("Book is null");
         }
@@ -52,11 +66,11 @@ public class Loan {
         }
     }
 
-    public String getUser() {
+    public User getUser() {
         return user;
     }
 
-    public void setUser(String user) {
+    public void setUser(User user) {
         if (user == null) {
             throw new IllegalArgumentException("User is null");
         }

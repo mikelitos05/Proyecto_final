@@ -1,5 +1,6 @@
 package edu.proyectofinal.ui;
 
+import edu.proyectofinal.data.Book;
 import edu.proyectofinal.process.BookManager;
 
 import javax.swing.*;
@@ -9,13 +10,15 @@ import javax.swing.table.DefaultTableModel;
 public class AddBook extends javax.swing.JFrame {
 
     private DefaultTableModel tablBooks;
+    private BookManager bookManager;
     /**
      * Creates new form Inicio
      */
-    public AddBook(DefaultTableModel tablBooks) {
+    public AddBook(DefaultTableModel tablBooks, BookManager bookManager) {
         initComponents();
         this.tablBooks = tablBooks;
         setLocationRelativeTo(null);
+        this.bookManager = bookManager;
     }
 
     /**
@@ -142,14 +145,29 @@ public class AddBook extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(AddBook.this, "No puede dejar el titulo del libro vacio");
         } else if (fieldDescription.getText().trim().isEmpty()) {
             JOptionPane.showMessageDialog(AddBook.this, "No puede dejar la descripcion del libro vacio");
-        }else if (fielNameAuthor.getText().trim().isEmpty()){
+        } else if (fielNameAuthor.getText().trim().isEmpty()) {
             JOptionPane.showMessageDialog(AddBook.this, "No puede dejar el autor del libro vacio");
-        }else{
-            BookManager bookManager = new BookManager();
-            //Esta pendiente arreglar lo de copias totales
-            bookManager.registerBook(fieldNameBook.getText(),fielNameAuthor.getText(),fieldDescription.getText(),1);
+        } else {
+            String title = fieldNameBook.getText().trim();
+            String author = fielNameAuthor.getText().trim();
+            String description = fieldDescription.getText().trim();
+            boolean bookExists = false;
+
+            for (int i = 0; i < tablBooks.getRowCount(); i++) {
+                if (tablBooks.getValueAt(i, 0).equals(title) && tablBooks.getValueAt(i, 1).equals(author)) {
+                    int totalCopies = (int) tablBooks.getValueAt(i, 3) + 1;
+                    tablBooks.setValueAt(totalCopies, i, 3);
+                    tablBooks.setValueAt(totalCopies, i, 4);
+                    bookExists = true;
+                    break;
+                }
+            }
+
+            if (!bookExists) {
+                tablBooks.addRow(new Object[]{title, author, description, 1, 1});
+            }
+
             JOptionPane.showMessageDialog(AddBook.this, "Libro registrado con exito");
-            tablBooks.addRow(new Object[]{fieldNameBook.getText(),fielNameAuthor.getText(),fieldDescription.getText(),1,1});
             this.dispose();
         }
 

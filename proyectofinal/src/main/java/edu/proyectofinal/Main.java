@@ -1,7 +1,10 @@
 package edu.proyectofinal;
 
 import edu.proyectofinal.data.Book;
+import edu.proyectofinal.data.Loan;
+import edu.proyectofinal.data.User;
 import edu.proyectofinal.process.BookManager;
+import edu.proyectofinal.process.LoanManager;
 import edu.proyectofinal.process.UserManager;
 import edu.proyectofinal.ui.AddBook;
 import edu.proyectofinal.ui.Menu;
@@ -20,6 +23,7 @@ public class Main {
         Path file = Paths.get("database/DataBase.txt");
         BookManager bookManager = new BookManager();
         UserManager userManager = new UserManager();
+        LoanManager loanManager = new LoanManager();
 
         List<String> lines = null;
         try {
@@ -35,11 +39,29 @@ public class Main {
             if (tokens[0].equals("Usuario")){
                 userManager.addUser(tokens[1],Integer.valueOf(tokens[2]),null);
             }
+            if (tokens[0].equals("Loan")) {
+
+                int userId = Integer.parseInt(tokens[1]);
+                String bookTitle = tokens[2];
+                String userName = tokens[3];
+                String startDate = tokens[4];
+                String endDate = tokens[5];
+                Loan.LoanStatus status = Loan.LoanStatus.valueOf(tokens[6]);
+                int id = Integer.valueOf(tokens[7]);
+                User user = userManager.findUserById(userId);
+
+
+
+
+                loanManager.preloadedLoan(bookManager.findBookByTitle(bookTitle), user, startDate,endDate, status, id);
+
+
+            }
         }
 
-
+        System.out.println(loanManager.getLoans().size());
         //Iniciar el programa
-        Menu menu = new Menu(bookManager,userManager);
+        Menu menu = new Menu(bookManager,userManager,loanManager);
         menu.setVisible(true);
 
     }

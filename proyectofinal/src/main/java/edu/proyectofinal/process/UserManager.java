@@ -29,13 +29,13 @@ public class UserManager {
     public void addUser(String name, int age, String type) {
         User user = null;
         if (age > 5 && age < 13) {
-            user = new Jr(name, age, 0);
+            user = new Jr(name, age, 0,users.size() + 1);
         } else if (age > 12 && age < 18) {
-            user = new Teen(name, age, 0);
+            user = new Teen(name, age, 0, users.size() + 1);
         } else if (age > 17) {
-            user = new Adult(name, age, 0);
+            user = new Adult(name, age, 0, users.size() + 1);
         } else if (type.equalsIgnoreCase("VIP")) {
-            user = new VIP(name, age, 0);
+            user = new VIP(name, age, 0, users.size() + 1);
         }
         users.add(user);
 
@@ -59,6 +59,20 @@ public class UserManager {
                 .filter(user -> user.getName().equalsIgnoreCase(name))
                 .findFirst()
                 .orElse(null);
+    }
+
+    /**
+     * Metodo que se encarga de encontrar al usuario mediante su id
+     * @param id
+     * @return
+     */
+    public User findUserById(int id) {
+        for (User user : users) {
+            if (user.getId() == id) {
+                return user;
+            }
+        }
+        return null;
     }
 }
 

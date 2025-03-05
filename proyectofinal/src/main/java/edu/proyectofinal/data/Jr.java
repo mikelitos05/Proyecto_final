@@ -1,7 +1,5 @@
 package edu.proyectofinal.data;
 
-import edu.proyectofinal.process.Config;
-
 /**
  * Clase con nombre Jr que representa a usuarios de 6 a 12 años.
  * No se permite que realicen préstamos.
@@ -14,8 +12,8 @@ public class Jr extends User {
      * @param age Edad del usuario.
      * @param activeLend Número préstamos activos (siempre será en 0).
      */
-    public Jr(String name, int age, int activeLend) {
-        super(name, age, activeLend);
+    public Jr(String name, int age, int activeLend, int id) {
+        super(name, age, activeLend, id);
     }
 
     @Override

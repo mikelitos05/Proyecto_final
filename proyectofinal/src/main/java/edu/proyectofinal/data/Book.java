@@ -8,6 +8,8 @@ import java.util.UUID; //aquí es en donde se genera automáticamente al libro e
  * Dentro de esta clase se genera un identificador único (ID) para cada copia que se registre.
  */
 public class Book {
+
+    private int id;
     private String title;
     private String author;
     private String genre;
@@ -21,11 +23,12 @@ public class Book {
      * @param genre Descripción del libro.
      * @param totalCopies Número total de copias.
      */
-    public Book(String title, String author, String genre, int totalCopies) {
+    public Book(String title, String author, String genre, int totalCopies, int id) {
         this.title = title;
         this.author = author;
         this.genre = genre;
         this.totalCopies = totalCopies;
+        this.id = id;
         this.copyIds = new ArrayList<>();
         for (int i = 0; i < totalCopies; i++) {
             this.copyIds.add(UUID.randomUUID().toString());
@@ -71,6 +74,14 @@ public class Book {
     public int getAvailabilityCopies(){
         return copyIds.size();
     }
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
 
     /**
      * Extrae y retorna el identificador único de una copia disponible.

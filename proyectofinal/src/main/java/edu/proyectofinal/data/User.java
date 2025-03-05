@@ -1,6 +1,9 @@
 package edu.proyectofinal.data;
 
 public abstract class User {
+
+
+    protected int id;
     protected String name;
     protected int age;
     protected int activeLend;
@@ -13,10 +16,11 @@ public abstract class User {
      * @param age Edad del usuario
      * @param activeLend Numero de préstamos activos.
      */
-    public User(String name,int age, int activeLend) {
+    public User(String name,int age, int activeLend, int id) {
         this.name = name;
         this.age = age;
         this.activeLend = activeLend;
+        this.id = id;
     }
 
     public String getName() {
@@ -77,5 +81,13 @@ public abstract class User {
      * @return Tipo de usuario.
      */
     public abstract String getUserType();
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
 }
