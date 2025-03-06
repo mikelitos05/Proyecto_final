@@ -1,8 +1,7 @@
-package edu.proyectofinal.ui;
+package edu.proyectofinal.gui;
 
 
 import edu.proyectofinal.data.Book;
-import edu.proyectofinal.data.Loan;
 import edu.proyectofinal.data.User;
 import edu.proyectofinal.process.BookManager;
 import edu.proyectofinal.process.LoanManager;
@@ -18,7 +17,9 @@ import java.time.format.DateTimeFormatter;
  */
 public class MakeLoan extends javax.swing.JFrame {
 
+    private DefaultTableModel tablBooks;
     private DefaultTableModel tablLoans;
+    private DefaultTableModel tablUsers;
     private LoanManager loanManager;
     private UserManager userManager;
     private BookManager bookManager;
@@ -26,12 +27,14 @@ public class MakeLoan extends javax.swing.JFrame {
     /**
      * Creates new form MakeLoan
      */
-    public MakeLoan(DefaultTableModel tablLoans, LoanManager loanManager, UserManager userManager, BookManager bookManager) {
+    public MakeLoan(DefaultTableModel tablLoans, LoanManager loanManager, UserManager userManager, BookManager bookManager, DefaultTableModel tablBooks, DefaultTableModel tablUsers) {
         initComponents();
         this.tablLoans = tablLoans;
         this.loanManager = loanManager;
         this.userManager = userManager;
         this.bookManager = bookManager;
+        this.tablBooks = tablBooks;
+        this.tablUsers = tablUsers;
         setCombUsers(userManager);
         setjCombBooks(bookManager);
     }
@@ -39,7 +42,10 @@ public class MakeLoan extends javax.swing.JFrame {
     public void setCombUsers(UserManager userManager){
         jCombUsers.addItem("Seleccione un usuario");
         for (User user: userManager.getUsers()){
-            jCombUsers.addItem(user.getName() + " - " + user.getId());
+            if (user.getUserType() != "Jr" && user.getActiveLend() < user.getMaxLoans()){
+                jCombUsers.addItem(user.getName() + " - " + user.getId());
+            }
+
         }
 
     }
@@ -47,7 +53,10 @@ public class MakeLoan extends javax.swing.JFrame {
     public void setjCombBooks(BookManager bookManager){
         jCombBooks.addItem("Seleccione un libro");
         for (Book book: bookManager.getBooks()){
-            jCombBooks.addItem(book.getTitle() + " - " + book.getAuthor());
+            if(book.getAvailabilityCopies() > 0){
+                jCombBooks.addItem(book.getTitle() + " - " + book.getAuthor() + "- " + book.getAvailabilityCopies());
+            }
+
         }
     }
 
@@ -141,31 +150,46 @@ public class MakeLoan extends javax.swing.JFrame {
 
     private void btnConfirmActionPerformed(java.awt.event.ActionEvent evt) {
         String selectedUser = (String) jCombUsers.getSelectedItem();
+        String selectedBook = (String) jCombBooks.getSelectedItem();
 
         if (selectedUser != null && selectedUser.equals("Seleccione un usuario")) {
             JOptionPane.showMessageDialog(this, "Por favor, seleccione un usuario válido.");
-        }else{
+        } else if (selectedBook != null && selectedBook.equals("Seleccione un libro")) {
+            JOptionPane.showMessageDialog(this, "Por favor, seleccione un libro válido.");
+        } else {
             String[] userParts = selectedUser.split(" - ");
             String userName = userParts[0];
-            int id = Integer.valueOf(userParts[1]);
-            String[] bookParts = selectedUser.split(" - ");
+            int userId = Integer.valueOf(userParts[1]);
+            String[] bookParts = selectedBook.split(" - ");
             String bookTitle = bookParts[0];
 
             LocalDateTime today = LocalDateTime.now();
-            LocalDateTime endDate = today.plusDays(userManager.findUserById(id).getLoanDurationDays());
+            LocalDateTime endDate = today.plusDays(userManager.findUserById(userId).getLoanDurationDays());
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
             String stringToday = today.format(formatter);
             String stringEndDate = endDate.format(formatter);
 
-
             loanManager.addLoan(bookManager.findBookByTitle(bookTitle), userManager.findUserByName(userName), stringToday, loanManager.calculateStatus(stringToday, stringEndDate));
-            tablLoans.addRow(new Object[]{ userName, bookTitle, stringToday, stringEndDate , loanManager.calculateDaysBetween(stringToday,stringEndDate),loanManager.calculateStatus(stringToday,stringEndDate)});
+            tablLoans.addRow(new Object[]{ userName, bookTitle, stringToday, stringEndDate , loanManager.calculateDaysBetween(stringToday, stringEndDate), loanManager.calculateStatus(stringToday, stringEndDate)});
+
+            for (int i = 0; i < tablBooks.getRowCount(); i++) {
+                if (tablBooks.getValueAt(i, 0).equals(bookTitle)) {
+                    int availableCopies = (int) tablBooks.getValueAt(i, 4) - 1;
+                    tablBooks.setValueAt(availableCopies, i, 4);
+                    break;
+                }
+            }
+
+            for (int i = 0; i < tablUsers.getRowCount(); i++) {
+                if (tablUsers.getValueAt(i, 1).equals(userName)) {
+                    int activeLoans = (int) tablUsers.getValueAt(i, 3) + 1;
+                    tablUsers.setValueAt(activeLoans, i, 3);
+                    break;
+                }
+            }
 
             this.dispose();
-
         }
-
-
     }
 
     private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {

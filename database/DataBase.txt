@@ -1,8 +1,8 @@
 Libro:Cien años de soledad:Gabriel Garcia Marquez:Realismo mágico:1
 Libro:Cien años de soledad:Gabriel Garcia Marquez:Realismo mágico:2
 Libro:1984:George Orwell:Distopía:1
-Libro:1984:George Orwell:Distopía:2
-Libro:1984:George Orwell:Distopía:3
+Libro:1984:George Orwell:Distopía:1
+Libro:1984:George Orwell:Distopía:1
 Libro:Don Quijote de la Mancha:Miguel de Cervantes:Novela de caballerías:1
 Libro:El gran Gatsby:F. Scott Fitzgerald:Novela trágica:1
 Libro:El gran Gatsby:F. Scott Fitzgerald:Novela trágica:2
@@ -89,7 +89,4 @@ Usuario:Jack Kerouac:58
 Usuario:William Blake:59
 Usuario:Ana María Matute:60
 
-Loan:1:Cien años de soledad:Gabriel García Márquez:2025-03-04:2025-03-23:ACTIVE:1
-Loan:2:Cien años de soledad:Jorge Luis Borges:2025-03-04:2025-03-26:ACTIVE:2
-Loan:3:1984:Isabel Allende:2025-03-04:2025-04-08:ACTIVE:3
-Loan:4:1984:Ernest Hemingway:2025-03-04:2025-04-20:ACTIVE:4
+

@@ -1,19 +1,16 @@
 package edu.proyectofinal;
 
-import edu.proyectofinal.data.Book;
 import edu.proyectofinal.data.Loan;
 import edu.proyectofinal.data.User;
 import edu.proyectofinal.process.BookManager;
 import edu.proyectofinal.process.LoanManager;
 import edu.proyectofinal.process.UserManager;
-import edu.proyectofinal.ui.AddBook;
-import edu.proyectofinal.ui.Menu;
+import edu.proyectofinal.gui.Menu;
 
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
 import java.util.List;
 
 public class Main {

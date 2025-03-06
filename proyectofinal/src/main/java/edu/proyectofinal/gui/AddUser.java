@@ -1,6 +1,5 @@
-package edu.proyectofinal.ui;
+package edu.proyectofinal.gui;
 
-import edu.proyectofinal.process.BookManager;
 import edu.proyectofinal.process.UserManager;
 
 import javax.swing.*;
@@ -164,13 +163,13 @@ public class AddUser extends javax.swing.JFrame {
                             JOptionPane.showMessageDialog(AddUser.this, "No se puede registrar un usuario VIP menor de edad");
                             return;
                         }
-                        userManager.addUser(fieldName.getName(),edad,"vip");
+                        userManager.addUser(fieldName.getName(),edad,"VIP");
                         tablUsers.addRow(new Object[]{userManager.getUsers().size(),fieldName.getText(),edad,0,"VIP"});
                         JOptionPane.showMessageDialog(AddUser.this, "Usuario registrado con exito");
                         this.dispose();
                     }else {
                         userManager.addUser(fieldName.getText(), edad, null);
-                        tablUsers.addRow(new Object[]{userManager.getUsers().size(),tablUsers.getRowCount() + 1,fieldName.getText(), edad, 0, userManager.findUserByName(fieldName.getText()).getUserType()});
+                        tablUsers.addRow(new Object[]{tablUsers.getRowCount() + 1,fieldName.getText(), edad, 0, userManager.findUserByName(fieldName.getText()).getUserType()});
 
 
                         JOptionPane.showMessageDialog(AddUser.this, "Usuario registrado con exito");

@@ -1,6 +1,5 @@
-package edu.proyectofinal.ui;
+package edu.proyectofinal.gui;
 
-import edu.proyectofinal.data.Book;
 import edu.proyectofinal.process.BookManager;
 
 import javax.swing.*;

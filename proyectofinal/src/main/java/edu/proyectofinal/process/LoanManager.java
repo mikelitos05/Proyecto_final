@@ -30,7 +30,12 @@ public class LoanManager {
         return loans;
     }
 
-
+    /**
+     * Metodo que se encarga de calcular los dias que hay entre la fecha inicial y la final
+     * @param startDate fecha inicial del prestamo
+     * @param endDate fecha final del prestamo
+     * @return
+     */
     public long calculateDaysBetween(String startDate, String endDate) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         LocalDate start = LocalDate.parse(startDate, formatter);
@@ -48,6 +53,7 @@ public class LoanManager {
 
     public void preloadedLoan(Book book, User user, String startDate, String endDate, Loan.LoanStatus status, int id){
         Loan loan = new Loan(book,user,startDate,endDate,status,id);
+        user.setActiveLend(user.getActiveLend() + 1);
         loans.add(loan);
     }
 
@@ -64,6 +70,7 @@ public class LoanManager {
         } else {
             Loan loan = new Loan(book, user, startDate, stringEndDate, calculateStatus(startDate, stringEndDate), loans.size() + 1);
             user.setActiveLend(user.getActiveLend() + 1);
+            book.setAvailabilityCopies(book.getAvailabilityCopies() - 1);
             loans.add(loan);
         }
         return "Usuario no disponible";

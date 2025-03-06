@@ -1,4 +1,4 @@
-package edu.proyectofinal.ui;
+package edu.proyectofinal.gui;
 
 public class Language {
     protected String WELCOME;
@@ -29,5 +29,6 @@ public class Language {
     protected String TOTAL_COPIES;
     protected String AVAILABLE_COPIES;
     protected String TITLE;
+    protected String CONFIRM;
 
 }

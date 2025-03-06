@@ -16,6 +16,15 @@ public class Book {
     private int totalCopies;
     private ArrayList<String> copyIds;
 
+    public void setAvailabilityCopies(int availabilityCopies) {
+        AvailabilityCopies = availabilityCopies;
+    }
+
+    public int getAvailabilityCopies() {
+        return AvailabilityCopies;
+    }
+
+    private int AvailabilityCopies;
     /**
      * Constructor que inicializa un libro y genera identificadores únicos para cada copia.
      * @param title Título del libro.
@@ -33,6 +42,7 @@ public class Book {
         for (int i = 0; i < totalCopies; i++) {
             this.copyIds.add(UUID.randomUUID().toString());
         }
+        this.AvailabilityCopies = this.totalCopies;
     }
 
     public String getTitle() {
@@ -71,9 +81,7 @@ public class Book {
      * Retorna el número de copias disponibles.
      * @return Número de copias disponibles.
      */
-    public int getAvailabilityCopies(){
-        return copyIds.size();
-    }
+
     public int getId() {
         return id;
     }
