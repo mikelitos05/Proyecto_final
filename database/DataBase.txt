@@ -1,0 +1,77 @@
+Libro:Cien años de soledad:Gabriel Garcia Marquez:Realismo mágico:4
+Libro:1984:George Orwell:Distopía:2
+Libro:Don Quijote de la Mancha:Miguel de Cervantes:Novela de caballerías:1
+Libro:El gran Gatsby:F. Scott Fitzgerald:Novela trágica:2
+Libro:Orgullo y prejuicio:Jane Austen:Novela romántica:1
+Libro:La sombra del viento:Carlos Ruiz Zafon:Misterio:1
+Libro:Crimen y castigo:Fyodor Dostoyevski:Novela psicológica:3
+Libro:Matar a un ruiseñor:Harper Lee:Drama:2
+Libro:El Hobbit:J.R.R. Tolkien:Fantasía:1
+Libro:Rayuela:Julio Cortázar:Novela experimental:1
+Libro:El retrato de Dorian Gray:Oscar Wilde:Novela gótica:1
+Libro:El alquimista:Paulo Coelho:Ficción espiritual:3
+Libro:La casa de los espiritus:Isabel Allende:Realismo mágico:1
+Libro:Los pilares de la tierra:Ken Follett:Novela histórica:2
+Libro:El nombre de la rosa:Umberto Eco:Misterio histórico:1
+Usuario:Gabriel García Márquez:19
+Usuario:Jorge Luis Borges:22
+Usuario:Isabel Allende:35
+Usuario:Ernest Hemingway:47
+Usuario:Pablo Neruda:58
+Usuario:Virginia Woolf:63
+Usuario:Mario Vargas Llosa:71
+Usuario:Emily Brontë:84
+Usuario:Julio Cortázar:93
+Usuario:Toni Morrison:10
+Usuario:Federico García Lorca:11
+Usuario:Franz Kafka:12
+Usuario:Sor Juana Inés:13
+Usuario:James Joyce:14
+Usuario:Gabriela Mistral:15
+Usuario:Leo Tolstoy:16
+Usuario:Fiódor Dostoyevski:17
+Usuario:Charles Dickens:18
+Usuario:Mark Twain:19
+Usuario:William Faulkner:20
+Usuario:Jane Austen:21
+Usuario:George Orwell:22
+Usuario:Frances Hodgson Burnett:23
+Usuario:Oscar Wilde:24
+Usuario:Louisa May Alcott:25
+Usuario:Ray Bradbury:26
+Usuario:Haruki Murakami:27
+Usuario:J.R.R. Tolkien:28
+Usuario:Albert Camus:29
+Usuario:Simone de Beauvoir:30
+Usuario:Virginia Woolf:31
+Usuario:Jack London:32
+Usuario:Gabriel García Márquez:33
+Usuario:Emily Dickinson:34
+Usuario:William Shakespeare:35
+Usuario:John Steinbeck:36
+Usuario:Margaret Atwood:37
+Usuario:Emily Brontë:38
+Usuario:Stephen King:39
+Usuario:Vladimir Nabokov:40
+Usuario:Harper Lee:41
+Usuario:Ernest Hemingway:42
+Usuario:Herman Melville:43
+Usuario:T.S. Eliot:44
+Usuario:Joseph Conrad:45
+Usuario:William Wordsworth:46
+Usuario:Thomas Hardy:47
+Usuario:Franz Kafka:48
+Usuario:Zadie Smith:49
+Usuario:Marguerite Yourcenar:50
+Usuario:Victor Hugo:51
+Usuario:Gabriela García Mistral:52
+Usuario:Edgar Allan Poe:53
+Usuario:Honoré de Balzac:54
+Usuario:Kurt Vonnegut:55
+Usuario:V.S. Naipaul:56
+Usuario:Margaret Laurence:57
+Usuario:Jack Kerouac:58
+Usuario:William Blake:59
+Usuario:Ana María Matute:60
+Loan:Don Quijote de la Mancha:60:2025-02-26
+
