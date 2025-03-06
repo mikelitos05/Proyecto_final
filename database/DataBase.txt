@@ -1,32 +1,17 @@
-Libro:Cien años de soledad:Gabriel Garcia Marquez:Realismo mágico:1
-Libro:Cien años de soledad:Gabriel Garcia Marquez:Realismo mágico:2
-Libro:1984:George Orwell:Distopía:1
-Libro:1984:George Orwell:Distopía:1
-Libro:1984:George Orwell:Distopía:1
+Libro:Cien años de soledad:Gabriel Garcia Marquez:Realismo mágico:4
+Libro:1984:George Orwell:Distopía:2
 Libro:Don Quijote de la Mancha:Miguel de Cervantes:Novela de caballerías:1
-Libro:El gran Gatsby:F. Scott Fitzgerald:Novela trágica:1
 Libro:El gran Gatsby:F. Scott Fitzgerald:Novela trágica:2
 Libro:Orgullo y prejuicio:Jane Austen:Novela romántica:1
-Libro:Orgullo y prejuicio:Jane Austen:Novela romántica:2
-Libro:Orgullo y prejuicio:Jane Austen:Novela romántica:3
 Libro:La sombra del viento:Carlos Ruiz Zafon:Misterio:1
-Libro:Crimen y castigo:Fyodor Dostoyevski:Novela psicológica:1
-Libro:Crimen y castigo:Fyodor Dostoyevski:Novela psicológica:2
-Libro:Matar a un ruiseñor:Harper Lee:Drama:1
+Libro:Crimen y castigo:Fyodor Dostoyevski:Novela psicológica:3
 Libro:Matar a un ruiseñor:Harper Lee:Drama:2
-Libro:Matar a un ruiseñor:Harper Lee:Drama:3
 Libro:El Hobbit:J.R.R. Tolkien:Fantasía:1
 Libro:Rayuela:Julio Cortázar:Novela experimental:1
-Libro:Rayuela:Julio Cortázar:Novela experimental:2
 Libro:El retrato de Dorian Gray:Oscar Wilde:Novela gótica:1
-Libro:El retrato de Dorian Gray:Oscar Wilde:Novela gótica:2
-Libro:El retrato de Dorian Gray:Oscar Wilde:Novela gótica:3
-Libro:El alquimista:Paulo Coelho:Ficción espiritual:1
+Libro:El alquimista:Paulo Coelho:Ficción espiritual:3
 Libro:La casa de los espiritus:Isabel Allende:Realismo mágico:1
-Libro:La casa de los espiritus:Isabel Allende:Realismo mágico:2
-Libro:Los pilares de la tierra:Ken Follett:Novela histórica:1
 Libro:Los pilares de la tierra:Ken Follett:Novela histórica:2
-Libro:Los pilares de la tierra:Ken Follett:Novela histórica:3
 Libro:El nombre de la rosa:Umberto Eco:Misterio histórico:1
 Usuario:Gabriel García Márquez:19
 Usuario:Jorge Luis Borges:22
@@ -88,5 +73,5 @@ Usuario:Margaret Laurence:57
 Usuario:Jack Kerouac:58
 Usuario:William Blake:59
 Usuario:Ana María Matute:60
-
+Loan:Don Quijote de la Mancha:60:2025-02-26
 

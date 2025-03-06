@@ -163,7 +163,7 @@ public class AddUser extends javax.swing.JFrame {
                             JOptionPane.showMessageDialog(AddUser.this, "No se puede registrar un usuario VIP menor de edad");
                             return;
                         }
-                        userManager.addUser(fieldName.getName(),edad,"VIP");
+                        userManager.addUser(fieldName.getText(),edad,"VIP");
                         tablUsers.addRow(new Object[]{userManager.getUsers().size(),fieldName.getText(),edad,0,"VIP"});
                         JOptionPane.showMessageDialog(AddUser.this, "Usuario registrado con exito");
                         this.dispose();

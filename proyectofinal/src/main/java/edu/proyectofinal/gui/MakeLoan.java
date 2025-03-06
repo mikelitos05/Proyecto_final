@@ -50,13 +50,15 @@ public class MakeLoan extends javax.swing.JFrame {
 
     }
 
-    public void setjCombBooks(BookManager bookManager){
+    public void setjCombBooks(BookManager bookManager) {
         jCombBooks.addItem("Seleccione un libro");
-        for (Book book: bookManager.getBooks()){
-            if(book.getAvailabilityCopies() > 0){
-                jCombBooks.addItem(book.getTitle() + " - " + book.getAuthor() + "- " + book.getAvailabilityCopies());
+        for (int i = 0; i < tablBooks.getRowCount(); i++) {
+            int availableCopies = (int) tablBooks.getValueAt(i, 4);
+            if (availableCopies > 0) {
+                String title = (String) tablBooks.getValueAt(i, 0);
+                String author = (String) tablBooks.getValueAt(i, 1);
+                jCombBooks.addItem(title + " - " + author + " - " + availableCopies);
             }
-
         }
     }
 
@@ -164,6 +166,7 @@ public class MakeLoan extends javax.swing.JFrame {
             String bookTitle = bookParts[0];
 
             LocalDateTime today = LocalDateTime.now();
+            System.out.println(userManager.findUserById(userId).getUserType());
             LocalDateTime endDate = today.plusDays(userManager.findUserById(userId).getLoanDurationDays());
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
             String stringToday = today.format(formatter);

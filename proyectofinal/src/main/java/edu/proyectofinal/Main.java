@@ -1,5 +1,6 @@
 package edu.proyectofinal;
 
+import edu.proyectofinal.data.Book;
 import edu.proyectofinal.data.Loan;
 import edu.proyectofinal.data.User;
 import edu.proyectofinal.process.BookManager;
@@ -11,6 +12,8 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 public class Main {
@@ -37,20 +40,12 @@ public class Main {
                 userManager.addUser(tokens[1],Integer.valueOf(tokens[2]),null);
             }
             if (tokens[0].equals("Loan")) {
-
-                int userId = Integer.parseInt(tokens[1]);
-                String bookTitle = tokens[2];
-                String userName = tokens[3];
-                String startDate = tokens[4];
-                String endDate = tokens[5];
-                Loan.LoanStatus status = Loan.LoanStatus.valueOf(tokens[6]);
-                int id = Integer.valueOf(tokens[7]);
-                User user = userManager.findUserById(userId);
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
 
 
 
-                loanManager.preloadedLoan(bookManager.findBookByTitle(bookTitle), user, startDate,endDate, status, id);
+
 
 
             }

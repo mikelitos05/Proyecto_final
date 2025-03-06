@@ -32,10 +32,10 @@ public class UserManager {
             user = new Jr(name, age, 0,users.size() + 1);
         } else if (age > 12 && age < 18) {
             user = new Teen(name, age, 0, users.size() + 1);
+        } else if (type == "VIP"){
+            user = new VIP(name, age, 0, users.size() + 1);
         } else if (age > 17) {
             user = new Adult(name, age, 0, users.size() + 1);
-        } else if (type.equalsIgnoreCase("VIP")) {
-            user = new VIP(name, age, 0, users.size() + 1);
         }
         users.add(user);
 
