@@ -151,7 +151,7 @@ public class AddBook extends javax.swing.JFrame {
             String author = fielNameAuthor.getText().trim();
             String description = fieldDescription.getText().trim();
             boolean bookExists = false;
-
+            bookManager.registerBook(title,author,description,1);
             for (int i = 0; i < tablBooks.getRowCount(); i++) {
                 if (tablBooks.getValueAt(i, 0).equals(title) && tablBooks.getValueAt(i, 1).equals(author)) {
                     int totalCopies = (int) tablBooks.getValueAt(i, 3) + 1;
